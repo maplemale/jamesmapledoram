@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  
   <nav class="nav">
     <div class="container">
       <div class="nav-left">
@@ -27,7 +26,23 @@
       <h1>About James</h1>
       <div class="figure">
         <img src="img/profile.jpg" alt="Profile photo" class="img-profile" onerror="this.style.display='none'">
-        <p>I build high-impact product and engineering organizations that ship reliable, compliant, and user-centered software at scale. Over two decades, I’ve led transformations across SDLC, DevOps, and cloud architecture, delivering enterprise SaaS used by hundreds of thousands of users. I enjoy the intersection of strategy and hands-on leadership—bridging stakeholders, engineering, security, and design to create measurable outcomes.</p>
+        <div>
+          <p class="subtitle">I'm a passionate technologist living near beautiful Missoula Montana, among the people and nature that I love.</p>
+          <div class="icon-row">
+            <a class="icon-link" href="mailto:jrmapledoram@gmail.com" aria-label="Email James">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 6.01V6h16ZM4 18V8.236l7.386 6.28a1 1 0 0 0 1.228 0L20 8.236V18H4Z"/>
+              </svg>
+              <span>Email</span>
+            </a>
+            <a class="icon-link" href="https://www.linkedin.com/in/jmapledoram" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.98h5V24H0V8.98zM8.98 8.98h4.78v2.05h.07c.66-1.24 2.27-2.55 4.67-2.55 4.99 0 5.91 3.29 5.91 7.57V24h-5v-6.78c0-1.62-.03-3.71-2.26-3.71-2.26 0-2.61 1.77-2.61 3.59V24h-5V8.98z"/>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -43,19 +58,23 @@
         </ul>
       </div>
     </section>
-
-    <section>
-      <h2>Connect</h2>
-      <div class="card">
-        <p class="kv">
-          <span><a href="mailto:jrmapledoram@gmail.com">Email</a></span>
-          <span><a href="https://www.linkedin.com/in/jmapledoram" target="_blank" rel="noopener">Connect on LinkedIn</a></span>
-        </p>
-        <p class="note">I don’t list a phone number here, but I’m responsive by email and LinkedIn.</p>
-      </div>
-    </section>
   </main>
+
   <footer><div class="container">© James R. Mapledoram — Florence, MT.</div></footer>
-  <script src="script.js"></script>
+  <script>
+  const btn=document.getElementById('themeToggle');
+  if(btn){
+    const stored=localStorage.getItem('theme')||'light';
+    document.documentElement.setAttribute('data-theme', stored);
+    btn.textContent=stored==='dark'?'☀️ Light':'🌙 Dark';
+    btn.addEventListener('click', ()=>{
+      const cur=document.documentElement.getAttribute('data-theme')||'light';
+      const next=cur==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      btn.textContent=next==='dark'?'☀️ Light':'🌙 Dark';
+    });
+  }
+  </script>
 </body>
 </html>
