@@ -1,132 +1,202 @@
+document.addEventListener('DOMContentLoaded', function(){
 
-// --- Smooth scroll for in-page anchors ---
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', e=>{
-    const id=a.getAttribute('href').slice(1);
-    const el=document.getElementById(id);
-    if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}) }
+  // ---------------- Smooth scroll for in-page anchors ----------------
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id=a.getAttribute('href').slice(1);
+      const el=document.getElementById(id);
+      if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}) }
+    });
   });
-});
 
-// --- Theme with Matrix transition overlay ---
-(function(){
+  // ---------------- Theme init ----------------
   const THEME_KEY = 'theme';
-  const btn = document.getElementById('themeToggle');
   const root = document.documentElement;
+  const btn = document.getElementById('themeToggle');
 
-  // Ensure initial theme
+  function setTheme(next){
+    root.setAttribute('data-theme', next);
+    localStorage.setItem(THEME_KEY, next);
+    if(btn) btn.textContent = next === 'dark' ? '☀️ Light' : '🌙 Dark';
+  }
+
   const stored = localStorage.getItem(THEME_KEY) || 'light';
-  root.setAttribute('data-theme', stored);
-  if(btn) btn.textContent = stored === 'dark' ? '☀️ Light' : '🌙 Dark';
+  setTheme(stored);
 
-  // Create overlay + canvas once
-  let overlay = document.querySelector('.matrix-overlay');
-  if(!overlay){
-    overlay = document.createElement('div');
-    overlay.className = 'matrix-overlay';
-    overlay.innerHTML = '<canvas id="matrixCanvas"></canvas>';
-    document.body.appendChild(overlay);
+  if(!btn) return;
+
+  // Determine if we are on the About (index) page (GitHub Pages friendly)
+  const path = window.location.pathname;
+  const isAbout = path.endsWith('index.html') || path.endsWith('/') || path.endsWith('about.html') || path === '';
+
+  // ---------------- Non-index pages: plain, instant toggle ----------------
+  if(!isAbout){
+    btn.addEventListener('click', ()=>{
+      const current = root.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      setTheme(next);
+    });
+    return;
   }
-  const canvas = overlay.querySelector('canvas');
-  const ctx = canvas.getContext('2d', { alpha: false });
 
-  // Resize canvas to viewport
-  function fitCanvas(){
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  // ---------------- About page: TEXT-AWARE MATRIX EFFECT ----------------
+  // Whitespace-safe, column-grouped, with mid-animation theme flip
+  const MATRIX_CHARS = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  function isVisibleElement(node){
+    if(!(node instanceof Element)) return false;
+    const style = getComputedStyle(node);
+    if(style.visibility === 'hidden' || style.display === 'none') return false;
+    const rect = node.getBoundingClientRect();
+    return rect.width > 0 && rect.height > 0;
   }
-  window.addEventListener('resize', fitCanvas);
-  fitCanvas();
 
-  let rafId = null;
+  // One-time wrapper guard so we don't rewrap on every toggle
+  let wrappedOnce = false;
+
+  function prepareTextTargets(rootEl){
+    const stopTags = new Set(['SCRIPT','STYLE','NOSCRIPT','IFRAME','CANVAS','SVG','IMG','BUTTON','INPUT','TEXTAREA','SELECT']);
+    const allSpans = [];
+
+    if(!wrappedOnce){
+      const walker = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT, {
+        acceptNode(node){
+          const parent = node.parentElement;
+          if(!parent || stopTags.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
+          const text = node.nodeValue;
+          // Allow strings that contain whitespace, but require at least one visible char
+          if(!text || !text.replace(/\s+/g,'').length) return NodeFilter.FILTER_REJECT;
+          if(!isVisibleElement(parent)) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+
+      const replaceNodes = [];
+      while(walker.nextNode()){
+        replaceNodes.push(walker.currentNode);
+      }
+
+      replaceNodes.forEach(node => {
+        const frag = document.createDocumentFragment();
+        const wrapper = document.createElement('span');
+        wrapper.style.display = 'inline'; // preserve natural flow
+        const txt = node.nodeValue;
+        for(let i=0;i<txt.length;i++){
+          const ch = txt[i];
+          const span = document.createElement('span');
+          span.className = 'mx-char';
+          span.dataset.orig = ch;
+          if(ch === ' '){
+            // Render spaces as NBSP to preserve layout width visually
+            span.textContent = '\u00A0';
+            span.dataset.space = '1';
+          } else {
+            span.textContent = ch;
+          }
+          wrapper.appendChild(span);
+        }
+        frag.appendChild(wrapper);
+        node.parentNode.replaceChild(frag, node);
+      });
+
+      wrappedOnce = true;
+    }
+
+    // Group characters by their X position (pixel column)
+    const columns = new Map();
+    document.querySelectorAll('.mx-char').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      // Skip fully collapsed spans that carry only whitespace
+      if(rect.width === 0 && (el.dataset.orig || '').trim() === '') return;
+      const key = Math.round(rect.left);
+      const cy = Math.round(rect.top);
+      if(!columns.has(key)) columns.set(key, { x:key, items:[] });
+      columns.get(key).items.push({ el, y: cy });
+      allSpans.push(el);
+    });
+    // Sort each column by vertical position
+    columns.forEach(col => col.items.sort((a,b)=>a.y - b.y));
+    return { columns, allSpans };
+  }
+
   let running = false;
 
-  function startMatrix({ mode='to-dark' } = {}){
+  function matrixTextTransition({ duration=1100 } = {}){
     if(running) return;
     running = true;
-    overlay.classList.add('active');
 
-    // Setup columns and drops
-    const fontSize = 16;
-    const columns = Math.ceil(canvas.width / fontSize);
-    const drops = new Array(columns).fill(1);
+    const start = performance.now();
+    const { columns, allSpans } = prepareTextTargets(document.body);
 
-    // Choose colors based on mode
-    // to-dark: black & green on light background, then dark theme applies
-    // to-light: white/green on dark background, then light theme applies
-    const bgLight = '#ffffff';
-    const bgDark = '#0b0e14'; // matches site dark bg
-    const codeGreen = '#22c55e'; // accent green
-    const textBright = mode === 'to-dark' ? '#111827' : '#e5e7eb';
-    const bg = mode === 'to-dark' ? bgLight : bgDark;
+    // Per-column speeds and staggered starts
+    const starts = new Map(); // starting index offset (negative)
+    const speeds = new Map(); // items per second
+    columns.forEach((col, key) => {
+      starts.set(key, -Math.floor(Math.random()*8) - 3); // -3..-10
+      speeds.set(key, 18 + Math.random()*24);            // 18..42 items/sec
+    });
 
-    // Prepare background
-    ctx.fillStyle = bg;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    let themeFlipped = false;
 
-    // Matrix characters
-    const chars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    function tick(now){
+      const elapsedMs = now - start;
+      const elapsedSec = elapsedMs / 1000;
+      const done = elapsedMs >= duration;
 
-    let frames = 0;
-    const maxFrames = 42; // ~700ms at ~60fps
+      columns.forEach((col, key) => {
+        const items = col.items;
+        if(items.length === 0) return;
+        const head = Math.floor(starts.get(key) + elapsedSec * speeds.get(key));
+        for(let i=0;i<items.length;i++){
+          const el = items[i].el;
+          // Don't animate spaces to preserve exact layout
+          if(el.dataset.space === '1') continue;
 
-    function step(){
-      frames++;
-
-      // Semi-transparent fade for trailing effect
-      ctx.globalAlpha = 0.08;
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.globalAlpha = 1;
-
-      // Draw characters
-      ctx.font = fontSize + 'px monospace';
-      for(let i=0; i<drops.length; i++){
-        const x = i * fontSize;
-        const y = drops[i] * fontSize;
-
-        // Gradient-ish color: bright near top, green elsewhere
-        ctx.fillStyle = (frames % 10 === 0) ? codeGreen : textBright;
-        const char = chars[Math.floor(Math.random() * chars.length)];
-        ctx.fillText(char, x, y);
-
-        // Reset drop randomly
-        if(y > canvas.height && Math.random() > 0.975){
-          drops[i] = 0;
+          if(i <= head){
+            if(!el.classList.contains('mx-on')){
+              el.textContent = MATRIX_CHARS.charAt((Math.random()*MATRIX_CHARS.length)|0);
+              el.classList.add('mx-on');
+              if(Math.random() < 0.6) el.classList.add('mx-fade'); else el.classList.remove('mx-fade');
+            }else if(Math.random() < 0.18){
+              // occasional shimmer
+              el.textContent = MATRIX_CHARS.charAt((Math.random()*MATRIX_CHARS.length)|0);
+            }
+          }
         }
-        drops[i]++;
-      }
+      });
 
-      // Midway: switch theme so the background/body transitions underneath
-      if(frames === Math.floor(maxFrames/2)){
+      // Flip theme mid-way
+      if(!themeFlipped && elapsedMs >= duration/2){
+        themeFlipped = true;
         const current = root.getAttribute('data-theme') || 'light';
         const next = current === 'light' ? 'dark' : 'light';
-        root.setAttribute('data-theme', next);
-        localStorage.setItem(THEME_KEY, next);
-        if(btn) btn.textContent = next === 'dark' ? '☀️ Light' : '🌙 Dark';
+        setTheme(next);
       }
 
-      if(frames < maxFrames){
-        rafId = requestAnimationFrame(step);
-      } else {
-        // Fade-out the overlay, then stop
-        overlay.classList.remove('active');
+      if(!done){
+        requestAnimationFrame(tick);
+      }else{
+        // Revert characters to originals, including spaces (render as NBSP)
         setTimeout(()=>{
-          ctx.clearRect(0,0,canvas.width,canvas.height);
+          allSpans.forEach(el => {
+            if(el.dataset.space === '1'){
+              el.textContent = '\u00A0';
+            }else{
+              el.textContent = el.dataset.orig || el.textContent;
+            }
+            el.classList.remove('mx-on','mx-fade');
+          });
           running = false;
-          cancelAnimationFrame(rafId);
-          rafId = null;
-        }, 250);
+        }, 120);
       }
     }
 
-    rafId = requestAnimationFrame(step);
+    requestAnimationFrame(tick);
   }
 
-  if(btn){
-    btn.addEventListener('click', ()=>{
-      const current = root.getAttribute('data-theme') || 'light';
-      startMatrix({ mode: current === 'light' ? 'to-dark' : 'to-light' });
-    });
-  }
-})();
+  // Hook up the button on About only
+  btn.addEventListener('click', ()=>{
+    matrixTextTransition({ duration: 1100 });
+  });
+
+});

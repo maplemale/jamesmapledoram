@@ -61,20 +61,6 @@
   </main>
 
   <footer><div class="container">© James R. Mapledoram — Florence, MT.</div></footer>
-  <script>
-  const btn=document.getElementById('themeToggle');
-  if(btn){
-    const stored=localStorage.getItem('theme')||'light';
-    document.documentElement.setAttribute('data-theme', stored);
-    btn.textContent=stored==='dark'?'☀️ Light':'🌙 Dark';
-    btn.addEventListener('click', ()=>{
-      const cur=document.documentElement.getAttribute('data-theme')||'light';
-      const next=cur==='light'?'dark':'light';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      btn.textContent=next==='dark'?'☀️ Light':'🌙 Dark';
-    });
-  }
-  </script>
+<script src="script.js"></script>
 </body>
 </html>

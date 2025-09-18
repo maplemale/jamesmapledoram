@@ -75,3 +75,33 @@ footer{padding:32px 0;color:#6b7280;text-align:center;border-top:1px solid var(-
 body, .card, nav.nav, footer{
   transition: background-color .35s ease, color .35s ease, border-color .35s ease;
 }
+
+/* Matrix text morph effect */
+.mx-char{
+  display:inline-block;
+  transition: color .25s ease, opacity .25s ease, transform .25s ease;
+  will-change: color, opacity, transform;
+}
+.mx-on{ color:#22c55e; }
+.mx-fade{ opacity:.65; transform: translateY(2px); }
+
+/* base stylesheet placeholder */
+
+/* Matrix text morph effect */
+.mx-char{
+  display:inline-block;
+  transition: color .25s ease, opacity .25s ease, transform .25s ease;
+  will-change: color, opacity, transform;
+}
+.mx-on{ color:#22c55e; }
+.mx-fade{ opacity:.65; transform: translateY(2px); }
+
+/* Matrix text morph effect (whitespace-safe) */
+.mx-char{
+  display:inline;           /* inline avoids inline-block space collapsing issues */
+  white-space: pre;         /* preserve spaces in inline content */
+  transition: color .25s ease, opacity .25s ease, transform .25s ease;
+  will-change: color, opacity, transform;
+}
+.mx-on{ color:#22c55e; }
+.mx-fade{ opacity:.65; transform: translateY(2px); }
