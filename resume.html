@@ -1,134 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Resume — James R. Mapledoram</title>
-  <meta name="description" content="Resume, skills, and experience for James Mapledoram.">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>James R. Mapledoram — Resume</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  
-  <nav class="nav">
-    <div class="container">
+  <header>
+    <nav class="navbar">
       <div class="nav-left">
-        <a href="index.html">About + Connect</a>
-        <a href="resume.html">Resume</a>
-        <a href="projects.html">Projects</a>
+        <a href="index.html" class="nav-logo">James R. Mapledoram</a>
       </div>
       <div class="nav-right">
-        <button id="themeToggle" class="toggle">🌙 Dark</button>
+        <a href="index.html">About</a>
+        <a href="resume.html">Resume</a>
+        <a href="projects.html">Projects</a>
+        <button id="themeToggle" class="theme-btn">🌙 Dark</button>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <main class="container">
+    <!-- Download link at the top -->
     <section>
-      <h1>Resume</h1>
-      <p><a class="cta" href="resumes/James_Mapledoram_Master.pdf">Download Resume (PDF)</a></p>
+      <h2>Download</h2>
+      <p>
+        <a href="resumes/James_Mapledoram_Master.pdf" download>Download the PDF resume</a>
+      </p>
     </section>
 
-    <section id="skills">
-      <h2>Technical Skills</h2>
-      <div class="grid cols-2">
-        <div class="card">
-          <h3>Product Leadership</h3>
-          <ul class="clean">
-            <li>Product Strategy, Roadmaps, Stakeholder Engagement</li>
-            <li>Cross-functional Leadership; Hiring & Mentoring</li>
-            <li>AI-Augmented Workflows; Governance</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Cloud & DevOps</h3>
-          <ul class="clean">
-            <li>Azure (DevOps, Functions, Blob, AKS, AAD), Kubernetes</li>
-            <li>CI/CD, SDLC Transformation, API-First Development</li>
-            <li>Security Standards, MFA Governance Frameworks</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Data & Systems</h3>
-          <ul class="clean">
-            <li>SQL Server, SSIS/SSAS/SSRS, ETL</li>
-            <li>REST/SOAP Integrations, Microservices</li>
-            <li>ERP Modernization, BI/Analytics</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Also Experienced In</h3>
-          <ul class="clean">
-            <li>WCF, .NET Core/Framework, C#, JavaScript, HTML/CSS</li>
-            <li>PCI/PHI/SOX Compliance, Oracle OLAP, Telecom Billing</li>
-            <li>Linux/Bash, PowerShell, Git, ADO, JIRA, Confluence</li>
-          </ul>
-        </div>
-      </div>
+    <!-- No photo, no email/city; summary is intentionally NOT shown here -->
+    <section class="philosophy">
+      <h2>Core Competencies</h2>
+      <ul>
+        <li><strong>Product Strategy & Leadership:</strong> Roadmapping, portfolio management, stakeholder alignment, OKRs.</li>
+        <li><strong>AI-augmented Product Development:</strong> Discovery, story writing, UX iteration, dev enablement.</li>
+        <li><strong>Lean/Agile/DevOps:</strong> CI/CD, small focused teams, telemetry-driven decisions, continuous learning.</li>
+        <li><strong>Cloud & Architecture:</strong> Azure (DevOps, Functions, Blob, AAD, AKS), API-first, microservices, Kubernetes.</li>
+        <li><strong>Engineering Foundations:</strong> .NET/C#, SQL Server, JavaScript/HTML/CSS, Linux & Bash.</li>
+        <li><strong>UX & Tooling:</strong> Figma, Postman, ADO/Azure DevOps, JIRA/Confluence, Git, Trello.</li>
+      </ul>
     </section>
 
-    <section id="experience">
-      <h2>Work Experience</h2>
-      <div class="card">
-        <div class="role"><div class="where">Director of Systems (Product Team) — Consumer Direct Care Network</div><div class="when">Missoula, MT • Jan 2023 – Present</div></div>
-        <ul class="clean">
-          <li>Directed launch of <strong>DirectMyCare.com</strong>, achieving industry-leading mobile adoption, higher CSAT, and reduced support demand.</li>
-          <li>Led corporate website restyle/re-release and <strong>HubSpot</strong> integration; built custom event registration/monitoring tools.</li>
-          <li>Established security governance via <strong>RACI</strong>; drove adoption of <strong>MFA</strong> standards across portals (advisor alongside Security/Engineering implementation owners).</li>
-          <li>Championed org-wide <strong>AI tooling</strong> (custom, source-controlled agents grounded in CDCN context) for Product, Design, UX, and Engineering.</li>
-          <li>Built hiring pipelines, career frameworks, and cross-team mentorship programs; restructured SDLC with functional team topology and DevOps-driven delivery.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="role"><div class="where">Application Development Manager (promoted from Senior Engineer) — Consumer Direct Care Network</div><div class="when">Missoula, MT • Nov 2019 – Dec 2022</div></div>
-        <ul class="clean">
-          <li>Instituted Agile (Scrum, TDD, demos) across multiple delivery teams.</li>
-          <li>Modernized ERP/microservices, scaling from 16K to 60K+ users.</li>
-          <li>Re-architected DevOps pipelines to improve release quality and frequency.</li>
-          <li>Mentored engineers on MVVM, mediator, IoC patterns.</li>
-          <li>Standardized Azure DevOps for work item handling and analytics.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="role"><div class="where">President & Principal Engineer — OmniProfit.net</div><div class="when">Aurora, CO • Jan 2009 – Nov 2019</div></div>
-        <ul class="clean">
-          <li>Bootstrapped SaaS from $80K to $1M annual revenue in 3 years; doubled staff.</li>
-          <li>Developed mobile procurement with live GPS tracking & profit reconciliation.</li>
-          <li>Integrated AWS APIs & Bluetooth scanning for field purchasing automation.</li>
-          <li>Built resale optimization platform and orchestrated company sale.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="role"><div class="where">Software Engineer IV — GoDaddy</div><div class="when">Scottsdale, AZ • May 2011 – Mar 2017</div></div>
-        <ul class="clean">
-          <li>Built SOX-compliant replacements for Microsoft Dynamics financial modules.</li>
-          <li>Led design & development of an automated currency hedging platform.</li>
-          <li>Migrated & rebuilt ETL/warehouse systems for invoice & registry data.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="role"><div class="where">Senior Developer — DIRECTV (Customer Care & BI)</div><div class="when">Aurora, CO • Jan 2008 – May 2011</div></div>
-        <ul class="clean">
-          <li>Built Oracle OLAP systems for 6,000+ users across multiple data sources.</li>
-          <li>Optimized ETL processes, reducing runtimes by 60%.</li>
-          <li>Developed cross-platform apps in Linux/Java/C#.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="role"><div class="where">Telecom Software Consultant — CHR Solutions (Martin Group)</div><div class="when">Missoula, MT • Mar 2001 – Jan 2008</div></div>
-        <ul class="clean">
-          <li>Lead BA & implementation consultant for telecom/CRM platforms.</li>
-          <li>Delivered DSL provisioning, outage reporting, and billing integrations.</li>
-          <li>Developed SQL-based tools & ETL scripts replacing legacy AutoCAD/Excel setups.</li>
-        </ul>
-      </div>
+    <section class="beliefs">
+      <h2>Professional Experience</h2>
+
+      <h3>Director of Systems (Product Team) — Consumer Direct Care Network</h3>
+      <p><em>Missoula, MT · Jan 2023 – Present</em></p>
+      <ul>
+        <li>Spearheaded the vision and design of an AI-augmented suite of HCM, payroll, and Medicaid billing tools processing billions annually.</li>
+        <li>Built and led product teams (BAs, PMs, UX) across the US and India; implemented hiring pipelines and career frameworks.</li>
+        <li>Overhauled the SDLC and delivery practices using lean-agile and DevOps principles.</li>
+        <li>Directed the rebuild of a legacy platform into a mobile-first solution for 180K+ users nationwide.</li>
+        <li>Launched the <strong>DirectMyCare.com</strong> portal to strong adoption and measurable wins (higher mobile usage, improved CSAT, lower support volume).</li>
+        <li>Guided a company-wide adoption of augmented AI tooling for Product, Design, UX, and Engineering (source-controlled, reusable agents grounded in CDCN context).</li>
+        <li>Functioned as a cross-functional advisor for security initiatives (e.g., MFA rollout) by defining clear ownership via RACI and change management—implementation owned by Engineering.</li>
+      </ul>
+
+      <h3>Application Development Manager (formerly Sr. Engineer) — Consumer Direct Care Network</h3>
+      <p><em>Missoula, MT · Nov 2019 – Dec 2022</em></p>
+      <ul>
+        <li>Instituted agile practices (Scrum, TDD, sprint demos) across multiple teams.</li>
+        <li>Modernized ERP and microservices to scale from 16K to 60K+ users.</li>
+        <li>Redesigned DevOps pipelines to improve CI/CD quality and release frequency.</li>
+        <li>Mentored engineers on design patterns (MVVM, mediator, inversion of control).</li>
+        <li>Standardized Azure DevOps work item handling for stories, bugs, analytics.</li>
+      </ul>
+
+      <h3>President & Principal Engineer — OmniProfit.net</h3>
+      <p><em>Aurora, CO · Jan 2009 – Nov 2019</em></p>
+      <ul>
+        <li>Bootstrapped and grew revenue from $80K to $1M/year; doubled staff within three years.</li>
+        <li>Built mobile procurement systems with live GPS tracking and profit reconciliation; integrated Bluetooth scanners and AWS APIs.</li>
+        <li>Launched SaaS for resale optimization and orchestrated the successful company sale.</li>
+      </ul>
+
+      <h3>Software Engineer IV — GoDaddy</h3>
+      <p><em>Scottsdale, AZ · May 2011 – Mar 2017</em></p>
+      <ul>
+        <li>Developed SOX-compliant replacements for MS Dynamics financial modules.</li>
+        <li>Led design and development of automated currency hedging platform.</li>
+        <li>Migrated and rebuilt ETL and warehouse systems for invoice and registry data.</li>
+      </ul>
+
+      <h3>Sr. Developer — DIRECTV (Customer Care & BI)</h3>
+      <p><em>Aurora, CO · Jan 2008 – May 2011</em></p>
+      <ul>
+        <li>Built Oracle OLAP systems for 6,000+ users across multiple data sources.</li>
+        <li>Optimized ETL processes, reducing runtimes by 60%.</li>
+        <li>Developed cross-platform Linux/Java/C# data transformation apps.</li>
+      </ul>
+
+      <h3>Telecom Software Consultant — CHR Solutions (Martin Group)</h3>
+      <p><em>Missoula, MT · Mar 2001 – Jan 2008</em></p>
+      <ul>
+        <li>Lead BA and implementation consultant for telecom/CRM systems.</li>
+        <li>Developed SQL tooling and ETL scripts to replace legacy AutoCAD/Excel workflows.</li>
+        <li>Delivered DSL provisioning, outage reporting, and billing integrations.</li>
+      </ul>
     </section>
 
-    <section id="education">
+    <section class="philosophy">
       <h2>Education</h2>
-      <div class="card"><p><strong>B.S. Information Systems</strong> — University of Montana, College of Business (2005)</p></div>
+      <p><strong>B.S. Information Systems</strong> — University of Montana, College of Business (2002–2005)</p>
+    </section>
+
+    <section class="beliefs">
+      <h2>Technical Skills</h2>
+      <p>Azure (DevOps, Functions, Blob, AKS, AAD) · .NET (Core & Framework) · C# · JavaScript · HTML/CSS · SQL Server · SSIS/SSAS/SSRS · Linux & Bash · Figma · Postman · JIRA · Confluence · ADO · Git · Trello · SOAP & REST APIs · Cross-Platform Mobile Frameworks</p>
     </section>
   </main>
-  <footer><div class="container">© James R. Mapledoram — Florence, MT.</div></footer>
+
   <script src="script.js"></script>
 </body>
 </html>

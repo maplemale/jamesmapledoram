@@ -1,66 +1,101 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About + Connect — James R. Mapledoram</title>
-  <meta name="description" content="About James Mapledoram — product philosophy, background, and how to connect.">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>James R. Mapledoram — About</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav class="nav">
-    <div class="container">
+  <header>
+    <nav class="navbar">
       <div class="nav-left">
-        <a href="index.html">About + Connect</a>
-        <a href="resume.html">Resume</a>
-        <a href="projects.html">Projects</a>
+        <a href="index.html" class="nav-logo">James R. Mapledoram</a>
       </div>
       <div class="nav-right">
-        <button id="themeToggle" class="toggle">🌙 Dark</button>
+        <a href="index.html">About</a>
+        <a href="resume.html">Resume</a>
+        <a href="projects.html">Projects</a>
+        <button id="themeToggle" class="theme-btn">🌙 Dark</button>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <main class="container">
-    <section>
-      <h1>About James</h1>
-      <div class="figure">
-        <img src="img/profile.jpg" alt="Profile photo" class="img-profile" onerror="this.style.display='none'">
-        <div>
-          <p class="subtitle">I'm a passionate technologist living near beautiful Missoula Montana, among the people and nature that I love.</p>
-          <div class="icon-row">
-            <a class="icon-link" href="mailto:jrmapledoram@gmail.com" aria-label="Email James">
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 6.01V6h16ZM4 18V8.236l7.386 6.28a1 1 0 0 0 1.228 0L20 8.236V18H4Z"/>
-              </svg>
-              <span>Email</span>
-            </a>
-            <a class="icon-link" href="https://www.linkedin.com/in/jmapledoram" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.98h5V24H0V8.98zM8.98 8.98h4.78v2.05h.07c.66-1.24 2.27-2.55 4.67-2.55 4.99 0 5.91 3.29 5.91 7.57V24h-5v-6.78c0-1.62-.03-3.71-2.26-3.71-2.26 0-2.61 1.77-2.61 3.59V24h-5V8.98z"/>
-              </svg>
-              <span>LinkedIn</span>
-            </a>
-          </div>
-        </div>
+  <main class="container about">
+    <section class="hero">
+      <img src="img/profile.jpg" alt="James R. Mapledoram" class="profile-pic"/>
+      <h1>James R. Mapledoram</h1>
+      <h2 class="subtitle">I'm a passionate technologist living near beautiful Missoula Montana, among the people and nature that I love.</h2>
+      <div class="connect-links">
+        <a href="mailto:jrmapledoram@gmail.com" class="icon-link" title="Email">
+          ✉️
+        </a>
+        <a href="https://www.linkedin.com/in/jmapledoram" target="_blank" rel="noopener" class="icon-link" title="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 
+                     5 5 5h14c2.76 0 5-2.24 
+                     5-5v-14c0-2.76-2.24-5-5-5zm-11 
+                     19h-3v-10h3v10zm-1.5-11.3c-.97 
+                     0-1.75-.79-1.75-1.75s.78-1.75 
+                     1.75-1.75 1.75.79 
+                     1.75 1.75-.78 1.75-1.75 
+                     1.75zm13.5 
+                     11.3h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 
+                     0-2.16 1.46-2.16 
+                     2.96v5.7h-3v-10h2.88v1.36h.04c.4-.75 
+                     1.38-1.54 2.84-1.54 3.04 0 
+                     3.6 2 3.6 4.6v5.6z"/>
+          </svg>
+        </a>
       </div>
+      <p class="summary">
+        Strategic Product and Engineering Leader with 20+ years of experience in SaaS,
+        cloud architecture, DevOps, and cross-functional team leadership. Proven record
+        of delivering enterprise-scale platforms, transforming SDLCs, and leading
+        AI-augmented product development. Passionate about building teams, driving
+        innovation, and shaping products that improve people’s lives.
+      </p>
     </section>
 
-    <section>
+    <section class="philosophy">
       <h2>Product Philosophy</h2>
-      <div class="card">
-        <ul class="clean">
-          <li><strong>User-centered, outcome-driven:</strong> Start with the job-to-be-done and align roadmaps to measurable business outcomes.</li>
-          <li><strong>AI-augmented workflows:</strong> Use structured, source-controlled AI agents to accelerate discovery, story writing, UX iteration, and developer flow—while maintaining governance.</li>
-          <li><strong>Secure-by-default:</strong> Partner with Security & Engineering; apply standards like MFA via clear RACI ownership and change management.</li>
-          <li><strong>DevOps & SDLC excellence:</strong> Small, focused teams; CI/CD discipline; telemetry-driven decisions.</li>
-          <li><strong>People first:</strong> Clear roles, mentorship, and growth paths beat heroics every time.</li>
-        </ul>
-      </div>
+      <ul>
+        <li>
+          <strong>User-centric, empathy and outcome-driven:</strong>
+          Start with the job-to-be-done and align roadmaps to measurable business outcomes.
+          Carry that focus down into the backlog by writing work items and stories that link user value
+          to delivery tasks, so developers always see the “why” behind the “what.”
+        </li>
+        <li>
+          <strong>Empowered by AI & modern tools:</strong>
+          Use AI and automation to enhance discovery, design, and delivery—freeing teams
+          to focus on creativity, insight, and solving the hardest problems.
+        </li>
+        <li>
+          <strong>Lean, Agile, and DevOps excellence:</strong>
+          Favor small, focused teams; apply lean-agile principles to reduce waste and accelerate
+          learning; and reinforce CI/CD discipline with telemetry-driven decisions that shorten
+          feedback loops and reduce risk.
+        </li>
+        <li>
+          <strong>People first:</strong>
+          Empower individuals to grow their skills and careers in ways that also create long-term
+          value for the company—aligning personal development with organizational success.
+        </li>
+      </ul>
+    </section>
+
+    <section class="beliefs">
+      <h2>Beliefs on Product Leadership</h2>
+      <ul>
+        <li><strong>Blend of creativity and technical depth:</strong> The best product leaders pair entrepreneurial vision with a willingness to dive deep into technology.</li>
+        <li><strong>Child-like love for technology:</strong> Curiosity and delight in how things work fuels innovation.</li>
+        <li><strong>Hands-on understanding:</strong> Reading code, exploring architecture, and troubleshooting alongside engineers sharpens product decisions.</li>
+        <li><strong>Change through software:</strong> Passion for technology translates into shaping products that truly improve people’s lives.</li>
+      </ul>
     </section>
   </main>
 
-  <footer><div class="container">© James R. Mapledoram — Florence, MT.</div></footer>
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
