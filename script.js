@@ -58,17 +58,17 @@ document.addEventListener('DOMContentLoaded', function(){
   window.addEventListener('resize', ()=>{ if(pill.classList.contains('show')) placePillNearButton(); });
 
   // Page check (About vs others)
-  const path=window.location.pathname;
-  const isAbout = path.endsWith('index.html') || path.endsWith('/') || path.endsWith('about.html') || path==='';
+  // const path=window.location.pathname;
+  // const isAbout = path.endsWith('index.html') || path.endsWith('/') || path.endsWith('about.html') || path==='';
 
-  if(!isAbout){
+  //if(!isAbout){
     // Non-index pages: instant toggle
-    btn.addEventListener('click', ()=>{
-      const cur=root.getAttribute('data-theme')||'light';
-      setTheme(cur==='light'?'dark':'light');
-    });
-    return;
-  }
+    //btn.addEventListener('click', ()=>{
+      //const cur=root.getAttribute('data-theme')||'light';
+      //setTheme(cur==='light'?'dark':'light');
+    //});
+    //return;
+  //}
 
   // ---- About page: text-aware Matrix morph (whitespace-safe)
   const MATRIX_CHARS='アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
