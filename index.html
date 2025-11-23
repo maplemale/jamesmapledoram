@@ -16,83 +16,194 @@
         <a href="index.html">About</a>
         <a href="resume.html">Resume</a>
         <a href="projects.html">Projects</a>
-        <button id="themeToggle" class="theme-btn">🌙 Dark</button>
+        <!-- Text here is just a fallback; JS will set it correctly on load -->
+        <button id="themeToggle" class="theme-btn">🛠 Engineering Portfolio</button>
       </div>
     </nav>
   </header>
 
   <main class="container about">
-    <section class="hero">
-      <img src="img/profile.jpg" alt="James R. Mapledoram" class="profile-pic"/>
-      <h1>James R. Mapledoram</h1>
-      <h2 class="subtitle">I'm a passionate technologist living near beautiful Missoula Montana, among the people and nature that I love.</h2>
-      <div class="connect-links">
-        <a href="mailto:jrmapledoram@gmail.com" class="icon-link" title="Email">
-          ✉️
-        </a>
-        <a href="https://www.linkedin.com/in/jmapledoram" target="_blank" rel="noopener" class="icon-link" title="LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 
-                     5 5 5h14c2.76 0 5-2.24 
-                     5-5v-14c0-2.76-2.24-5-5-5zm-11 
-                     19h-3v-10h3v10zm-1.5-11.3c-.97 
-                     0-1.75-.79-1.75-1.75s.78-1.75 
-                     1.75-1.75 1.75.79 
-                     1.75 1.75-.78 1.75-1.75 
-                     1.75zm13.5 
-                     11.3h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 
-                     0-2.16 1.46-2.16 
-                     2.96v5.7h-3v-10h2.88v1.36h.04c.4-.75 
-                     1.38-1.54 2.84-1.54 3.04 0 
-                     3.6 2 3.6 4.6v5.6z"/>
-          </svg>
-        </a>
-      </div>
-      <p class="summary">
-        Strategic Product and Engineering Leader with 20+ years of experience in SaaS,
-        cloud architecture, DevOps, and cross-functional team leadership. Proven record
-        of delivering enterprise-scale platforms, transforming SDLCs, and leading
-        AI-augmented product development. Passionate about building teams, driving
-        innovation, and shaping products that improve people’s lives.
-      </p>
+    <!-- LIGHT MODE / PRODUCT PERSONA -->
+    <section class="mode-wrapper content-mode--product" aria-label="Product leadership profile">
+      <section class="hero">
+        <img src="img/profile.jpg" alt="James R. Mapledoram" class="profile-pic"/>
+        <h1>James R. Mapledoram</h1>
+        <h2 class="subtitle">
+          I’m a
+          <a href="#" class="persona-inline" data-view="product">product</a>
+          and
+          <a href="#" class="persona-inline" data-view="engineering">engineering</a>
+          leader living near beautiful Missoula, Montana — building technology that serves people and respects the world we live in.
+        </h2>
+
+        <div class="connect-links">
+          <a href="mailto:jrmapledoram@gmail.com" class="icon-link" title="Email">
+            ✉️
+          </a>
+          <a href="https://www.linkedin.com/in/jmapledoram" target="_blank" rel="noopener" class="icon-link" title="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 
+                       5 5 5h14c2.76 0 5-2.24 
+                       5-5v-14c0-2.76-2.24-5-5-5zm-11 
+                       19h-3v-10h3v10zm-1.5-11.3c-.97 
+                       0-1.75-.79-1.75-1.75s.78-1.75 
+                       1.75-1.75 1.75.79 
+                       1.75 1.75-.78 1.75-1.75 
+                       1.75zm13.5 
+                       11.3h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 
+                       0-2.16 1.46-2.16 
+                       2.96v5.7h-3v-10h2.88v1.36h.04c.4-.75 
+                       1.38-1.54 2.84-1.54 3.04 0 
+                       3.6 2 3.6 4.6v5.6z"/>
+            </svg>
+          </a>
+        </div>
+        <p class="summary">
+          Strategic Product and Engineering Leader with 20+ years of experience in SaaS,
+          cloud architecture, DevOps, and cross-functional team leadership. Proven record
+          of delivering enterprise-scale platforms, transforming SDLCs, and leading
+          AI-augmented product development. Passionate about building teams, driving
+          innovation, and shaping products that improve people’s lives.
+        </p>
+      </section>
+
+      <section class="philosophy">
+        <h2>Product Philosophy</h2>
+        <ul>
+          <li>
+            <strong>User-centric, empathy and outcome-driven:</strong>
+            Start with the job-to-be-done and align roadmaps to measurable business outcomes.
+            Carry that focus down into the backlog by writing work items and stories that link user value
+            to delivery tasks, so developers always see the “why” behind the “what.”
+          </li>
+          <li>
+            <strong>Empowered by AI & modern tools:</strong>
+            Use AI and automation to enhance discovery, design, and delivery—freeing teams
+            to focus on creativity, insight, and solving the hardest problems.
+          </li>
+          <li>
+            <strong>Lean, Agile, and DevOps excellence:</strong>
+            Favor small, focused teams; apply lean-agile principles to reduce waste and accelerate
+            learning; and reinforce CI/CD discipline with telemetry-driven decisions that shorten
+            feedback loops and reduce risk.
+          </li>
+          <li>
+            <strong>People first:</strong>
+            Empower individuals to grow their skills and careers in ways that also create long-term
+            value for the company—aligning personal development with organizational success.
+          </li>
+        </ul>
+      </section>
+
+      <section class="beliefs">
+        <h2>Beliefs on Product Leadership</h2>
+        <ul>
+          <li><strong>Blend of creativity and technical depth:</strong> The best product leaders pair entrepreneurial vision with a willingness to dive deep into technology.</li>
+          <li><strong>Child-like love for technology:</strong> Curiosity and delight in how things work fuels innovation.</li>
+          <li><strong>Hands-on understanding:</strong> Reading code, exploring architecture, and troubleshooting alongside engineers sharpens product decisions.</li>
+          <li><strong>Change through software:</strong> Passion for technology translates into shaping products that truly improve people’s lives.</li>
+        </ul>
+      </section>
     </section>
 
-    <section class="philosophy">
-      <h2>Product Philosophy</h2>
-      <ul>
-        <li>
-          <strong>User-centric, empathy and outcome-driven:</strong>
-          Start with the job-to-be-done and align roadmaps to measurable business outcomes.
-          Carry that focus down into the backlog by writing work items and stories that link user value
-          to delivery tasks, so developers always see the “why” behind the “what.”
-        </li>
-        <li>
-          <strong>Empowered by AI & modern tools:</strong>
-          Use AI and automation to enhance discovery, design, and delivery—freeing teams
-          to focus on creativity, insight, and solving the hardest problems.
-        </li>
-        <li>
-          <strong>Lean, Agile, and DevOps excellence:</strong>
-          Favor small, focused teams; apply lean-agile principles to reduce waste and accelerate
-          learning; and reinforce CI/CD discipline with telemetry-driven decisions that shorten
-          feedback loops and reduce risk.
-        </li>
-        <li>
-          <strong>People first:</strong>
-          Empower individuals to grow their skills and careers in ways that also create long-term
-          value for the company—aligning personal development with organizational success.
-        </li>
-      </ul>
-    </section>
+    <!-- DARK MODE / ENGINEERING PERSONA -->
+    <section class="mode-wrapper content-mode--engineering" aria-label="Engineering leadership profile">
+      <section class="hero">
+        <img src="img/profile.jpg" alt="James R. Mapledoram" class="profile-pic"/>
+        <h1>James R. Mapledoram</h1>
+        <h2 class="subtitle">
+          I’m a
+          <a href="#" class="persona-inline" data-view="product">product</a>
+          and
+          <a href="#" class="persona-inline" data-view="engineering">engineering</a>
+          leader living near beautiful Missoula, Montana — building technology that serves people and respects the world we live in.
+        </h2>
 
-    <section class="beliefs">
-      <h2>Beliefs on Product Leadership</h2>
-      <ul>
-        <li><strong>Blend of creativity and technical depth:</strong> The best product leaders pair entrepreneurial vision with a willingness to dive deep into technology.</li>
-        <li><strong>Child-like love for technology:</strong> Curiosity and delight in how things work fuels innovation.</li>
-        <li><strong>Hands-on understanding:</strong> Reading code, exploring architecture, and troubleshooting alongside engineers sharpens product decisions.</li>
-        <li><strong>Change through software:</strong> Passion for technology translates into shaping products that truly improve people’s lives.</li>
-      </ul>
+        <div class="connect-links">
+          <a href="mailto:jrmapledoram@gmail.com" class="icon-link" title="Email">
+            ✉️
+          </a>
+          <a href="https://www.linkedin.com/in/jmapledoram" target="_blank" rel="noopener" class="icon-link" title="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 
+                       5 5 5h14c2.76 0 5-2.24 
+                       5-5v-14c0-2.76-2.24-5-5-5zm-11 
+                       19h-3v-10h3v10zm-1.5-11.3c-.97 
+                       0-1.75-.79-1.75-1.75s.78-1.75 
+                       1.75-1.75 1.75.79 
+                       1.75 1.75-.78 1.75-1.75 
+                       1.75zm13.5 
+                       11.3h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 
+                       0-2.16 1.46-2.16 
+                       2.96v5.7h-3v-10h2.88v1.36h.04c.4-.75 
+                       1.38-1.54 2.84-1.54 3.04 0 
+                       3.6 2 3.6 4.6v5.6z"/>
+            </svg>
+          </a>
+        </div>
+			<p class="summary">
+			  Engineering leader with 20+ years of experience designing and scaling SaaS platforms in cloud-native environments.
+			  I lead teams that care deeply about code quality, reliability, and operability—pairing solid architecture with pragmatic execution.
+			  I’ve built and evolved CI/CD pipelines, observability practices, and DevOps cultures that let teams ship quickly without sacrificing stability.
+			  I love mentoring engineers, untangling hard technical problems, and partnering with product to turn complex requirements into simple, robust systems.
+			</p>
+      </section>
+
+      <section class="philosophy">
+		  <h2>Engineering Leadership Strategy</h2>
+		  <ul>
+			<li>
+			  <strong>Grow developers into senior developers:</strong>
+			  My core mission as an engineering leader is mentorship. I invest deeply in technical maturity—helping developers
+			  grow judgment, autonomy, and architectural thinking. When teams level up, the entire organization gains leverage.
+			</li>
+
+			<li>
+			  <strong>Defensible, self-documenting, maintainable code:</strong>
+			  I emphasize code that is readable, consistent, and easy to reason about. Patterns, naming, and structure should
+			  *explain themselves*, reducing onboarding time, increasing reliability, and preventing knowledge silos.
+			</li>
+
+			<li>
+			  <strong>Architect for extensibility and separation of concerns:</strong>
+			  I advocate for modular, domain-driven patterns where systems are designed around the core model of the real-world
+			  business. Clean separation between domains, services, and concerns enables rapid change without system fragility.
+			</li>
+
+			<li>
+			  <strong>API-first, architecture-first delivery:</strong>
+			  Great engineering starts with modeling the system—not screens or workflows. I prioritize stable domain models,
+			  contract-driven APIs, and well-defined integration boundaries so that user interfaces and product experiences
+			  become simpler, faster, and safer to build.
+			</li>
+
+			<li>
+			  <strong>AI-empowered engineering, not rule-based orchestration:</strong>
+			  Modern platforms go beyond static business rules. I focus on integrating AI agents and automated decision systems
+			  that reduce operational load, improve accuracy, and unlock new product capabilities through adaptive intelligence.
+			</li>
+
+			<li>
+			  <strong>Analytics-ready system design:</strong>
+			  Systems should serve the business at every layer. I design DALs and service boundaries with reporting,
+			  observability, auditability, and governance in mind—so analytics are not an afterthought but a first-class feature.
+			</li>
+
+			<li>
+			  <strong>Lean, Agile, and DevOps excellence:</strong>
+			  Teams should estimate honestly, build passionately, and deploy safely with minimal ceremony. I champion CI/CD
+			  pipelines, trunk-based development, test automation, and telemetry-driven engineering that supports fast,
+			  stable, sustainable delivery.
+			</li>
+
+			<li>
+			  <strong>Team autonomy and end-to-end ownership:</strong>
+			  Inspired by <em>Team Topologies</em>, I believe in stream-aligned teams with clear mission boundaries, minimal
+			  handoffs, and full lifecycle ownership—from design through operations. Autonomy creates focus; focus accelerates
+			  value.
+			</li>
+		  </ul>
+		</section>
     </section>
   </main>
 
