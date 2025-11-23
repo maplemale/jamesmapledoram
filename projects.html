@@ -16,94 +16,393 @@
         <a href="index.html">About</a>
         <a href="resume.html">Resume</a>
         <a href="projects.html">Projects</a>
-        <button id="themeToggle" class="theme-btn">🌙 Dark</button>
+        <!-- Fallback text; script.js will overwrite based on theme -->
+        <button id="themeToggle" class="theme-btn">🛠 Engineering Portfolio</button>
       </div>
     </nav>
   </header>
 
   <main class="container">
-    <!-- No photo/name/contact here by design -->
-    <section class="philosophy">
-      <h2>Highlighted Projects</h2>
+
+    <!-- Simple local nav -->
+    <nav class="card-list" style="margin-bottom: 16px;">
+      <div class="card">
+        <strong>Jump to:</strong>
+        <a href="#professional-projects">Professional Projects</a> ·
+        <a href="#side-projects">Side Projects &amp; Independent Work</a>
+      </div>
+    </nav>
+
+    <!-- PROFESSIONAL PROJECTS (BOTH PERSONAS) -->
+    <section id="professional-projects">
+
+      <!-- PRODUCT MODE / LIGHT THEME -->
+      <section class="mode-wrapper content-mode--product" aria-label="Product-focused projects">
+        <section class="philosophy">
+          <h2>Highlighted Projects (Product Leadership Lens)</h2>
+          <div class="card-list">
+
+            <!-- Direct My Care – Product lens -->
+            <div class="card">
+              <h3>“Direct My Care” Portal — Mobile-First Redesign & Modernization</h3>
+              <p><em>Director of Systems, CDCN · 2023–Present</em></p>
+              <ul>
+                <li>
+                  Led the full product vision and roadmap for transforming CDCN’s legacy caregiver and member portal into a modern, mobile-first experience.
+                </li>
+                <li>
+                  Secured executive alignment for a multi-year modernization initiative, recruited UX/UI designers, and
+                  established a long-term cross-functional partnership model spanning PMO, Customer Experience, Quality,
+                  Engineering, and Marketing.
+                </li>
+                <li>
+                  Worked with Marketing to formalize brand guidelines, improve
+                  accessibility of colors and components, and ensure the updated portal aligned with CDCN’s broader public
+                  web presence.
+                </li>
+                <li>
+                  Directed a phased modernization strategy using a hybrid strangler approach: redesigned the highest-value,
+                  highest-traffic workflows as new greenfield experiences while lift-shifting lower-use areas to ensure continuity
+                  for hundreds of thousands of users across multiple states.
+                </li>
+                <li>
+                  Established basic observability and auditability (App Insights, usage telemetry, and data-layer logging) to
+                  support monitoring and compliance—capabilities that previously did not meaningfully exist.
+                </li>
+                <li>
+                  Introduced a scalable multi-lingual framework for the portal, replacing hard-coded translations with a vendor-supported
+                  model covering 13 languages. Established the foundation for future integration with an enterprise translation management
+                  system through collaboration with Marketing and Enterprise Architecture.
+                </li>
+                <li>
+                  Early outcomes include a measurable increase in mobile usage, stable call-center volume through rollout,
+                  consistent shift submission behavior, and a significantly more maintainable, brand-consistent platform
+                  positioned for ongoing accessibility and UX improvements.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Websites + HubSpot – Product lens -->
+            <div class="card">
+              <h3>Public Website Modernization & HubSpot Integration</h3>
+              <p><em>Director of Systems, CDCN · 2023–Present</em></p>
+              <ul>
+                <li>
+                  Initiated and led a modernization strategy for CDCN’s network of public websites—historically owned solely by
+                  Marketing—transforming them into jointly governed digital assets that support onboarding, communication, and
+                  user-facing education.
+                </li>
+                <li>
+                  Established the first sustained partnership between Product, Engineering, and Marketing for public-facing
+                  websites, aligning brand, content strategy, UX, accessibility, and technical stewardship under shared goals.
+                </li>
+                <li>
+                  Collaborated with Marketing to refresh brand guidelines and introduce accessible color, layout, and component
+                  standards that now apply consistently across CDCN’s public web presence.
+                </li>
+                <li>
+                  Defined a hybrid CMS strategy using WordPress for structural content and HubSpot for engagement, analytics,
+                  and lead management. Oversaw implementation of event tracking and a new custom registration calendar.
+                </li>
+                <li>
+                  Guided design and development teams through a coordinated rollout, beginning with the national website and
+                  expanding toward a unified ecosystem of 13+ state and program sites.
+                </li>
+                <li>
+                  Outcomes include a more secure, brand-consistent public presence, improved content velocity for Marketing,
+                  and clearer visibility into user behavior and engagement.
+                </li>
+              </ul>
+            </div>
+
+            <!-- MFA – Product lens -->
+            <div class="card">
+              <h3>MFA Strategy, Governance & Rollout Planning</h3>
+              <p><em>Director of Systems, CDCN · 2023–Present</em></p>
+              <ul>
+                <li>
+                  Played a key role in shaping CDCN’s multi-year MFA strategy, working with Security, Product, and business
+                  leadership to balance stronger account protection with the realities of a large, diverse caregiver and member
+                  population.
+                </li>
+                <li>
+                  Helped define ownership boundaries between Security and Product—establishing governance, decision rights, and a
+                  shared roadmap instead of treating MFA as a one-time “IT project.”
+                </li>
+                <li>
+                  Participated in vendor selection and advocated for a configurable, buy-and-integrate approach over building
+                  everything in-house, with a focus on long-term maintainability and flexibility.
+                </li>
+                <li>
+                  Led product discovery and UX definition for MFA enrollment and challenge flows, including requirements gathering,
+                  wireframes, and Figma designs for SMS and email-based factors as the initial focus.
+                </li>
+                <li>
+                  Worked through cross-cutting questions such as where to roll out MFA first, how to prioritize channels,
+                  how users maintain their contact information, and how to communicate changes with minimal disruption to customer
+                  support.
+                </li>
+                <li>
+                  The resulting plan emphasizes a phased rollout, SMS- and email-first factors, clear user communication, and a
+                  foundation that can support additional risk-based and event-triggered protections over time.
+                </li>
+              </ul>
+            </div>
+
+            <!-- AI workflows – Product lens -->
+            <div class="card">
+              <h3>AI-Augmented Product & Design Workflows</h3>
+              <p><em>Director of Systems, CDCN · 2023–Present</em></p>
+              <ul>
+                <li>
+                  Introduced AI tools and patterns into Product, UX, and Design workflows to accelerate discovery, research
+                  synthesis, story-writing, and content iteration—while keeping humans accountable for decisions.
+                </li>
+                <li>
+                  Defined reusable, source-controlled AI agents grounded in CDCN context to reduce one-off prompts and
+                  improve outcome consistency and governance.
+                </li>
+                <li>
+                  Reduced friction in early-stage work (drafts, alternatives, summaries), allowing teams to spend more time
+                  on prioritization, stakeholder alignment, and higher-order design.
+                </li>
+              </ul>
+            </div>
+
+            <!-- ERP modernization – Product lens -->
+            <div class="card">
+              <h3>ERP & Microservices Modernization</h3>
+              <p><em>App Dev Manager, CDCN · 2019–2022</em></p>
+              <ul>
+                <li>
+                  Oversaw modernization of line-of-business systems as the organization scaled from ~16K to 60K+ users,
+                  helping connect product priorities with operational and compliance needs.
+                </li>
+                <li>
+                  Introduced Scrum ceremonies, demos, and more transparent backlog practices to improve collaboration
+                  between business stakeholders and engineering teams.
+                </li>
+                <li>
+                  Standardized ADO work items and reporting to better reflect product outcomes, delivery throughput, and
+                  technical work in a shared language.
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="beliefs">
+          <h2>Product-Facing Practices I Bring to Projects</h2>
+          <ul>
+            <li><strong>Outcome-focused product management:</strong> Tie roadmaps, backlogs, and experiments to measurable outcomes rather than output alone.</li>
+            <li><strong>Design systems & UX collaboration:</strong> Use Figma and shared component libraries to keep product, design, and engineering aligned.</li>
+            <li><strong>AI as a product accelerator:</strong> Embed AI agents into discovery, story-writing, and research to reduce busywork and increase insight.</li>
+            <li><strong>Cross-functional alignment:</strong> Work with Marketing, Operations, Finance, and Compliance so product decisions reflect the full business system.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- ENGINEERING MODE / DARK THEME -->
+      <section class="mode-wrapper content-mode--engineering" aria-label="Engineering-focused projects">
+        <section class="philosophy">
+          <h2>Highlighted Projects (Engineering Leadership Lens)</h2>
+          <div class="card-list">
+
+            <!-- Direct My Care – Engineering lens -->
+            <div class="card">
+              <h3>“Direct My Care” Portal — Architecture & Platform Modernization</h3>
+              <p><em>Director of Systems, CDCN · 2023–Present</em></p>
+              <ul>
+                <li>
+                  Partnered with engineering and architecture leadership to modernize a tightly coupled, desktop-era portal
+                  into a mobile-first, PWA-based front end aligned with backend service rewrites.
+                </li>
+                <li>
+                  Advocated for an API-first, domain-focused design approach so timesheet, approval, and profile-management
+                  flows were modeled around real-world usage and stable contracts rather than UI constraints.
+                </li>
+                <li>
+                  Supported engineering teams through a phased strangler migration strategy, balancing greenfield UI
+                  development with risk-managed lift-and-shift of legacy areas to maintain availability for hundreds of thousands of users.
+                </li>
+                <li>
+                  Helped introduce fundamental observability and auditability practices (App Insights telemetry and
+                  structured data-layer events) to monitor adoption, behavior, and error patterns.
+                </li>
+                <li>
+                  Supported implementation of a multi-lingual architecture that expanded language coverage from two hard-coded languages
+                  to 13 vendor-backed translations. Helped define the future integration path for an enterprise translation management
+                  system in partnership with Architecture.
+                </li>
+                <li>
+                  The resulting architecture is significantly more maintainable, extensible, and aligned with CDCN’s
+                  cross-platform branding and accessibility goals.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Websites + HubSpot – Engineering lens -->
+            <div class="card">
+              <h3>Public Website Modernization & HubSpot Integration</h3>
+              <p><em>Director of Systems, CDCN · 2023–Present</em></p>
+              <ul>
+                <li>
+                  Worked with Engineering and Marketing leadership to bring CDCN’s distributed network of public websites under
+                  a shared governance and technical strategy, improving security, maintainability, and UX consistency.
+                </li>
+                <li>
+                  Helped define architectural guardrails and clarify ownership boundaries for WordPress, HubSpot, and supporting
+                  systems to reduce operational risk and increase long-term sustainability.
+                </li>
+                <li>
+                  Supported designers and developers through modernization of templates, components, and accessibility patterns
+                  used across the new public site experience.
+                </li>
+                <li>
+                  Contributed to integration patterns that connect HubSpot event tracking and registration workflows with CDCN’s
+                  broader technical ecosystem.
+                </li>
+                <li>
+                  The refreshed national site provides a foundation for gradual modernization of 13+ additional CDCN public sites
+                  with a consistent design system and shared infrastructure practices.
+                </li>
+              </ul>
+            </div>
+
+            <!-- MFA – Engineering lens -->
+            <div class="card">
+              <h3>MFA Platform Selection & Integration Strategy</h3>
+              <p><em>Director of Systems, CDCN · 2023–Present</em></p>
+              <ul>
+                <li>
+                  Worked with Security, Architecture, and Engineering leaders to evaluate MFA options and select a vendor platform
+                  that could integrate with CDCN’s existing identity landscape without requiring a full custom build.
+                </li>
+                <li>
+                  Helped clarify how MFA configuration, enrollment, and challenge flows should interact with existing systems,
+                  especially around where user contact data lives and how it can be safely updated and surfaced for MFA.
+                </li>
+                <li>
+                  Contributed to the definition of initial technical scope: SMS- and email-based factors, event-triggered challenges,
+                  and the supporting services required to make those flows reliable and auditable.
+                </li>
+                <li>
+                  Supported UX and engineering teams by ensuring that Figma designs, requirements, and backend assumptions stayed
+                  aligned—reducing the risk of “throwing designs over the wall” to implementation teams.
+                </li>
+                <li>
+                  Helped establish an ongoing collaboration model with Security so MFA standards, patterns, and rollout decisions are
+                  treated as part of CDCN’s broader modernization roadmap rather than isolated one-off changes.
+                </li>
+              </ul>
+            </div>
+
+            <!-- AI workflows – Engineering lens -->
+            <div class="card">
+              <h3>AI-Augmented Product & Engineering Workflows</h3>
+              <p><em>Director of Systems, CDCN · 2023–Present</em></p>
+              <ul>
+                <li>
+                  Designed and implemented reusable, source-controlled AI agents and tooling patterns grounded in CDCN’s
+                  domain, security, and privacy models.
+                </li>
+                <li>
+                  Worked with engineers to integrate AI into workflows for code assistance, testing support, and
+                  documentation, while preserving human oversight of design and architecture.
+                </li>
+                <li>
+                  Balanced experimentation with governance by emphasizing logging, policy awareness, and auditability of
+                  AI-assisted work.
+                </li>
+              </ul>
+            </div>
+
+            <!-- ERP modernization – Engineering lens -->
+            <div class="card">
+              <h3>ERP & Microservices Modernization</h3>
+              <p><em>App Dev Manager, CDCN · 2019–2022</em></p>
+              <ul>
+                <li>
+                  Led development teams modernizing ERP-adjacent systems toward service-oriented and microservice-aligned
+                  patterns as the user base grew from ~16K to 60K+.
+                </li>
+                <li>
+                  Introduced CI/CD pipelines, automated tests, and movement toward trunk-based development to increase
+                  deployment frequency while maintaining stability.
+                </li>
+                <li>
+                  Encouraged telemetry and logging practices that improved operational insight and reduced blind spots in
+                  production.
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="beliefs">
+          <h2>Engineering Practices & Tooling I Bring to Projects</h2>
+          <ul>
+            <li><strong>Defensible, self-documenting code:</strong> Emphasis on readability, consistent patterns, and separation of concerns so systems remain understandable at scale.</li>
+            <li><strong>API-first, domain-focused architecture:</strong> Systems modeled around the real-world business, with stable contracts and clear boundaries between services.</li>
+            <li><strong>AI-empowered engineering:</strong> Use AI agents to support code generation, testing, and decision-making while keeping humans in control of design and tradeoffs.</li>
+            <li><strong>Lean DevOps & CI/CD:</strong> Trunk-based development, automated tests, and observability so teams can ship frequently with confidence.</li>
+            <li><strong>Analytics-ready design:</strong> Data access layers and event streams designed with reporting, governance, and auditability as first-class concerns.</li>
+          </ul>
+        </section>
+      </section>
+
+    </section>
+
+    <!-- SHARED SIDE PROJECTS (VISIBLE IN BOTH THEMES) -->
+    <section class="beliefs" id="side-projects">
+      <h2>Side Projects & Independent Work</h2>
       <div class="card-list">
+
         <div class="card">
-          <h3>DirectMyCare.com — Mobile-First Portal</h3>
-          <p><em>Director of Systems, CDCN · 2023–Present</em></p>
-          <ul>
-            <li>Led the product vision and delivery for a mobile-first portal now serving 180K+ users nationwide.</li>
-            <li>Achieved measurable adoption increases on mobile devices (closing gap vs. industry benchmarks), improved CSAT, and reduced support volume.</li>
-            <li>Established backlog hygiene and story-writing standards that connected user outcomes to developer tasks.</li>
-          </ul>
+          <h3>Professional Portfolio (JamesMapledoram.com)</h3>
+          <p>
+            A fully custom HTML/CSS/JavaScript portfolio built in partnership with AI. I designed the site structure,
+            architectural patterns, and interaction model, then leveraged ChatGPT for rapid code generation, component
+            scaffolding, and debugging. This project demonstrates my ability to pair senior-level engineering literacy with
+            modern AI tooling — building faster, cleaner, and more creatively while still understanding every line of code
+            that runs in production.
+          </p>
         </div>
 
         <div class="card">
-          <h3>Company Websites Restyle + HubSpot Integration</h3>
-          <p><em>Director of Systems, CDCN · 2023–Present</em></p>
-          <ul>
-            <li>Simultaneously restyled and re-released primary marketing websites with a unified design system.</li>
-            <li>Integrated HubSpot for event tracking and built custom calendar registration and monitoring.</li>
-            <li>Improved content velocity and analytics visibility for marketing and sales teams.</li>
-          </ul>
+          <h3>FHEGGS — Multi-Vendor Farm-to-Farm Marketplace</h3>
+          <p>
+            <a href="https://fheggs.com" target="_blank">fheggs.com</a> ·
+            <a href="https://fheggs.10web.cloud/#" target="_blank">UAT Site</a>
+          </p>
+          <p>
+            A farm-to-farm, multi-vendor marketplace for fertilized hatching eggs, built with my wife using the 10Web
+            platform. The hatching egg community largely relies on platforms where live-animal or fertility-related sales
+            are discouraged or prohibited, making this a novel solution focused on legitimacy, quality, and consistency.
+            I selected the underlying platform, plugins, and extensibility model; designed the information architecture;
+            and ensured scalability for future vendor onboarding, listing governance, and customer communication. This
+            project blends product strategy, platform selection, UX decisions, and light engineering to create a
+            pre-launch marketplace with strong early interest.
+          </p>
         </div>
 
         <div class="card">
-          <h3>MFA Adoption Standard & Security Collaboration</h3>
-          <p><em>Director of Systems, CDCN · 2023–Present</em></p>
-          <ul>
-            <li>Defined departmental responsibilities (Security, Product, Dev, Architecture) through a clear RACI to support MFA adoption at scale.</li>
-            <li>Guided change management, communications, and rollout planning; Engineering owned implementation.</li>
-            <li>Reduced account-hijacking risk and aligned user flows with modern authentication expectations.</li>
-          </ul>
+          <h3>torqueRight (“What the Torque?”) — Mobile App for Mechanics</h3>
+          <p>
+            A pre-AI mobile application I built independently to give home and small-shop mechanics quick access to bolt
+            torque specifications — not engine torque, but the precise pressure required to safely tighten specific bolts
+            during vehicle repair. I wrote a multi-threaded data extraction service that pulled specifications from
+            official sources, stored them in a locally indexed SQLite database, and shipped a Xamarin Forms application
+            with offline and online modes. While the app is now sunset, it was a deep dive into mobile development,
+            data processing, and building a clean UX for a niche but highly technical audience.
+          </p>
         </div>
 
-        <div class="card">
-          <h3>AI-Augmented Product & Design Workflows</h3>
-          <p><em>Director of Systems, CDCN · 2023–Present</em></p>
-          <ul>
-            <li>Led adoption of AI tooling across Product, Design, UX, and Engineering to accelerate discovery, story writing, and iteration.</li>
-            <li>Created source-controlled, reusable AI agents grounded in CDCN context for consistent outcomes and governance.</li>
-            <li>Improved cycle times and quality while preserving human judgment and design intent.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>ERP & Microservices Modernization</h3>
-          <p><em>App Dev Manager, CDCN · 2019–2022</em></p>
-          <ul>
-            <li>Scaled systems from 16K to 60K+ users; instituted Scrum, TDD, demos, and pipeline improvements.</li>
-            <li>Standardized ADO work items for stories/bugs/analytics; improved traceability and release cadence.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Automated Currency Hedging Platform</h3>
-          <p><em>Software Engineer IV, GoDaddy · 2011–2017</em></p>
-          <ul>
-            <li>Led design and development of an automated FX hedging system integrated with finance workflows.</li>
-            <li>Migrated ETL/warehouse systems supporting invoicing and registry data.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>OmniProfit — Mobile Procurement & SaaS</h3>
-          <p><em>Founder, OmniProfit.net · 2009–2019</em></p>
-          <ul>
-            <li>Built mobile procurement with live GPS and Bluetooth-scanner integrations; AWS-backed automation.</li>
-            <li>Grew revenue from $80K to $1M/year; led the product to a successful exit.</li>
-          </ul>
-        </div>
       </div>
     </section>
 
-    <section class="beliefs">
-      <h2>Tooling & Practices I Bring to Projects</h2>
-      <ul>
-        <li><strong>Lean-Agile + CI/CD:</strong> Short feedback loops, trunk-based development, and telemetry-in-the-loop decision-making.</li>
-        <li><strong>Design Systems & UX Partnering:</strong> Figma-driven iteration with shared tokens and component libraries.</li>
-        <li><strong>AI as a Force Multiplier:</strong> Reusable agents for discovery, writing, testing; guardrails for quality and compliance.</li>
-        <li><strong>Cloud-native Foundations:</strong> Azure-first, API-first, secure-by-default principles partnered with Security/Engineering.</li>
-      </ul>
-    </section>
   </main>
 
   <script src="script.js"></script>
