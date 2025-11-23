@@ -16,118 +16,350 @@
         <a href="index.html">About</a>
         <a href="resume.html">Resume</a>
         <a href="projects.html">Projects</a>
-        <button id="themeToggle" class="theme-btn">🌙 Dark</button>
+        <!-- Fallback text; script.js will overwrite based on theme / mode -->
+        <button id="themeToggle" class="theme-btn">🛠 Engineering Portfolio</button>
       </div>
     </nav>
   </header>
 
   <main class="container">
-    <!-- Download link at the top -->
-    <section>
-      <h2>Download</h2>
-      <p><a href="resumes/James_Mapledoram_Master.pdf" download>Download the Engineering resume</a></p>
-      <p><a href="resumes/James_Mapledoram_Product.pdf" download>Download the Product resume</a></p>
-    </section>
 
-    <!-- Header block (matches the PDF's top lines) -->
+    <!-- Download links are shared for both personas -->
     <section class="philosophy">
-      <h1 style="margin-top:0;">James R. Mapledoram</h1>
-      <p>Florence, MT • <a href="mailto:jrmapledoram@gmail.com">jrmapledoram@gmail.com</a> • (406) 370-7687 • <a href="https://www.linkedin.com/in/jmapledoram" target="_blank" rel="noopener">linkedin.com/in/jmapledoram</a></p>
-    </section>
-
-    <section class="beliefs">
-      <h2>Professional Summary</h2>
+      <h2>Download</h2>
       <p>
-        Strategic Product &amp; Engineering Leader with 20+ years of experience in SaaS development,
-        DevOps, and cloud architecture. Proven record of scaling engineering organizations,
-        transforming SDLC processes, and delivering enterprise SaaS solutions used by hundreds of
-        thousands of users. Skilled at bridging executive strategy with hands-on technical
-        leadership, driving product innovation, and ensuring compliance in Medicaid, payroll, and
-        healthcare IT systems. Passionate about aligning business goals with modern, scalable
-        technology.
+        <a href="resumes/James_Mapledoram_Master.pdf" download>
+          Download the Engineering-focused resume (PDF)
+        </a>
+      </p>
+      <p>
+        <a href="resumes/James_Mapledoram_Product.pdf" download>
+          Download the Product-focused resume (PDF)
+        </a>
       </p>
     </section>
 
+    <!-- Shared header / contact info -->
     <section class="philosophy">
-      <h2>Technical Skills</h2>
-      <ul>
-        <li><strong>Programming:</strong> .NET Core/Framework, C#, JavaScript, HTML/CSS, Cross-Platform Mobile</li>
-        <li><strong>Cloud &amp; DevOps:</strong> Azure (DevOps, Functions, Blob, AKS, AAD), Kubernetes, Git, CI/CD</li>
-        <li><strong>Data &amp; Integration:</strong> SQL Server, SSIS/SSAS/SSRS, ETL, REST/SOAP APIs</li>
-        <li><strong>Tools:</strong> Azure DevOps, JIRA, Confluence, Trello, Postman, Figma</li>
-        <li><strong>Operating Systems &amp; Scripting:</strong> Windows, MacOS, Linux/UNIX, PowerShell, Bash</li>
-      </ul>
+      <h1 style="margin-top:0;">James R. Mapledoram</h1>
+      <p>
+        Florence, MT •
+        <a href="mailto:jrmapledoram@gmail.com">jrmapledoram@gmail.com</a> •
+        (406) 370-7687 •
+        <a href="https://www.linkedin.com/in/jmapledoram" target="_blank" rel="noopener">
+          linkedin.com/in/jmapledoram
+        </a>
+      </p>
     </section>
 
-    <section class="beliefs">
-      <h2>Work Experience</h2>
+    <!-- PRODUCT MODE (LIGHT THEME) -->
+    <section class="mode-wrapper content-mode--product" aria-label="Product-focused resume">
 
-      <h3>Director: Product — Consumer Direct Care Network</h3>
-      <p><em>Missoula, MT | Jan 2023 – Present</em></p>
-      <ul>
-        <li>Directed launch of DirectMyCare.com portal, achieving industry-leading mobile adoption, higher CSAT, and reduced customer support demand.</li>
-        <li>Spearheaded corporate website re-platforming, integrating with HubSpot for automated campaigns and building custom event registration/monitoring tools.</li>
-        <li>Established a company-wide security governance framework, defining departmental responsibilities (security, product, dev, architecture) through a RACI matrix and driving adoption of MFA standards across portals.</li>
-        <li>Championed adoption of AI-augmented product development workflows; enabled product, design, UX, and engineering teams to leverage structured, source-controlled custom AI agents for story writing, design iteration, and development acceleration.</li>
-        <li>Expanded product team impact through AI-driven backlog management, SDLC automation, and org-wide knowledge grounding, improving delivery speed and collaboration.</li>
-      </ul>
+      <section class="beliefs">
+        <h2>Professional Summary</h2>
+        <p>
+          Strategic Product &amp; Systems Leader with 20+ years of experience in SaaS, Medicaid-focused platforms,
+          and cloud-based enterprise applications. Skilled at translating executive strategy into actionable product
+          roadmaps, aligning cross-functional teams (Product, UX, Engineering, Security, Marketing), and delivering
+          modern, accessible experiences for hundreds of thousands of users. Known for combining system-level thinking
+          with hands-on understanding of architecture, DevOps, and AI tooling to drive sustainable, outcome-focused
+          change.
+        </p>
+      </section>
 
-      <h3>Application Development Manager (promoted from Senior Engineer) — Consumer Direct Care Network</h3>
-      <p><em>Missoula, MT | Nov 2019 – Dec 2022</em></p>
-      <ul>
-        <li>Instituted agile processes (Scrum, TDD, sprint demos) across multiple delivery teams.</li>
-        <li>Modernized ERP and microservices, enabling scale from 16K to 60K+ users.</li>
-        <li>Re-architected DevOps pipelines, improving release quality and frequency.</li>
-        <li>Mentored engineers in design patterns (MVVM, mediator, IoC).</li>
-        <li>Standardized Azure DevOps for work item and analytics tracking.</li>
-      </ul>
+      <section class="philosophy">
+        <h2>Skills &amp; Tools (Product Lens)</h2>
+        <ul>
+          <li><strong>Product Leadership:</strong> Vision &amp; roadmap, stakeholder alignment, portfolio &amp; prioritization, KPI/outcome definition</li>
+          <li><strong>Discovery &amp; UX:</strong> User journeys, JTBD framing, partnering with UX/Design, Figma-based iteration</li>
+          <li><strong>AI-Augmented Workflows:</strong> AI agents for discovery, writing, synthesis, and documentation; governance &amp; consistency</li>
+          <li><strong>Delivery &amp; SDLC:</strong> Lean-Agile, Scrum, backlog hygiene, story alignment to user and business outcomes</li>
+          <li><strong>Domain Expertise:</strong> Medicaid self-directed care, payroll &amp; time capture, caregiver/participant portals</li>
+          <li><strong>Technical Fluency:</strong> API-first thinking, cloud-native patterns, DevOps collaboration, telemetry-informed decisions</li>
+        </ul>
+      </section>
 
-      <h3>President &amp; Principal Engineer — OmniProfit.net</h3>
-      <p><em>Aurora, CO | Jan 2009 – Nov 2019</em></p>
-      <ul>
-        <li>Founded and grew SaaS company from $80K to $1M annual sales in three years.</li>
-        <li>Developed mobile procurement platforms with GPS tracking and profit reconciliation.</li>
-        <li>Integrated AWS APIs and Bluetooth scanner hardware for field automation.</li>
-        <li>Built and sold SaaS resale optimization platform.</li>
-      </ul>
+      <section class="beliefs">
+        <h2>Work Experience</h2>
 
-      <h3>Software Engineer IV — GoDaddy</h3>
-      <p><em>Scottsdale, AZ | May 2011 – Mar 2017</em></p>
-      <ul>
-        <li>Designed SOX-compliant replacements for Microsoft Dynamics modules.</li>
-        <li>Developed automated currency hedging platform.</li>
-        <li>Rebuilt ETL and data warehouse systems for invoice/registry data.</li>
-      </ul>
+        <h3>Director: Product — Consumer Direct Care Network</h3>
+        <p><em>Missoula, MT | Jan 2023 – Present</em></p>
+        <ul>
+          <li>
+            Lead the product vision and roadmap for transforming CDCN’s legacy caregiver and member portal into a modern,
+            mobile-first experience, including navigation redesign, new shift entry and approval flows, and stronger
+            alignment with CDCN’s brand and accessibility goals.
+          </li>
+          <li>
+            Secured executive alignment for a multi-year modernization initiative, recruited UX/UI designers, and
+            established a long-term cross-functional partnership model spanning PMO, Customer Experience, Quality,
+            Engineering, and Marketing.
+          </li>
+          <li>
+            Worked with Marketing to formalize brand guidelines, improve accessibility of colors and components, and
+            ensure the updated portal and public sites present a consistent, professional, and user-centered experience.
+          </li>
+          <li>
+            Directed a phased modernization strategy using a hybrid strangler approach: redesigned high-value, high-traffic
+            workflows as new greenfield experiences while lift-shifting lower-use areas to ensure continuity for
+            hundreds of thousands of users across multiple states.
+          </li>
+          <li>
+            Established basic observability and auditability (App Insights, usage telemetry, and data-layer logging) to
+            support monitoring and compliance—capabilities that previously did not meaningfully exist.
+          </li>
+          <li>
+            Introduced a scalable multi-lingual framework for the portal, replacing hard-coded translations with a
+            vendor-supported model covering 13 languages and laying the groundwork for future integration with an
+            enterprise translation management system.
+          </li>
+          <li>
+            Early outcomes include a measurable increase in mobile usage, stable call-center volume through rollout,
+            consistent shift submission behavior, and a significantly more maintainable, brand-consistent platform
+            positioned for ongoing accessibility and UX improvements.
+          </li>
+          <li>
+            Initiated and led modernization of CDCN’s public websites, bringing them under shared Product/Engineering/Marketing
+            governance, defining a hybrid WordPress + HubSpot strategy, and improving content velocity and analytics for
+            campaigns and events.
+          </li>
+          <li>
+            Played a key role in shaping CDCN’s multi-year MFA strategy: defined shared ownership between Security and
+            Product, participated in vendor selection, and led product discovery and UX definition for SMS- and
+            email-based factors and phased rollout plans.
+          </li>
+          <li>
+            Championed AI-augmented workflows across Product, UX, and Design, defining reusable, source-controlled AI agents
+            grounded in CDCN context and enabling teams to move faster on research synthesis, story-writing, and content
+            iteration while preserving human oversight.
+          </li>
+        </ul>
 
-      <h3>Senior Developer – Customer Care &amp; BI — DIRECTV</h3>
-      <p><em>Aurora, CO | Jan 2008 – May 2011</em></p>
-      <ul>
-        <li>Built Oracle OLAP systems for 6,000+ users across diverse data sources.</li>
-        <li>Optimized ETL, reducing runtimes by 60%.</li>
-        <li>Developed cross-platform apps in Linux/Java/C#.</li>
-      </ul>
+        <h3>Application Development Manager (promoted from Senior Engineer) — Consumer Direct Care Network</h3>
+        <p><em>Missoula, MT | Nov 2019 – Dec 2022</em></p>
+        <ul>
+          <li>
+            Managed multiple delivery teams modernizing core systems as CDCN scaled from ~16K to 60K+ users, aligning
+            technical work with product and operational priorities.
+          </li>
+          <li>
+            Introduced and reinforced Agile practices (Scrum ceremonies, demos, retros) to improve transparency and
+            stakeholder engagement.
+          </li>
+          <li>
+            Partnered with engineering leads on modernization of ERP-adjacent systems and service-oriented patterns,
+            improving scalability and maintainability.
+          </li>
+          <li>
+            Reworked DevOps pipelines in coordination with technical leads to increase deployment reliability and
+            predictability.
+          </li>
+          <li>
+            Standardized Azure DevOps work items and reporting, improving visibility into capacity, throughput, and
+            product-aligned work.
+          </li>
+        </ul>
 
-      <h3>Telecom Software Consultant — CHR Solutions (Martin Group)</h3>
-      <p><em>Missoula, MT | Mar 2001 – Jan 2008</em></p>
-      <ul>
-        <li>Acted as lead BA and implementation consultant for telecom and CRM platforms.</li>
-        <li>Delivered SQL-based provisioning, outage reporting, and billing integrations.</li>
-      </ul>
+        <h3>President &amp; Principal — OmniProfit.net</h3>
+        <p><em>Aurora, CO | Jan 2009 – Nov 2019</em></p>
+        <ul>
+          <li>
+            Founded and operated a SaaS business providing mobile procurement and inventory optimization solutions for
+            multi-location retailers and service providers.
+          </li>
+          <li>
+            Led product strategy, customer discovery, pricing, and roadmap while coordinating development and support.
+          </li>
+        </ul>
+
+        <h3>Software Engineer IV — GoDaddy</h3>
+        <p><em>Scottsdale, AZ | May 2011 – Mar 2017</em></p>
+        <ul>
+          <li>
+            Partnered with Finance, Product, and Operations stakeholders on large-scale internal systems, including SOX-sensitive
+            replacements for key financial modules and data pipelines.
+          </li>
+          <li>
+            Helped transition manual and batch-heavy workflows into more automated, auditable processes for invoicing and
+            registry data management.
+          </li>
+        </ul>
+
+        <h3>Senior Developer – Customer Care &amp; BI — DIRECTV</h3>
+        <p><em>Aurora, CO | Jan 2008 – May 2011</em></p>
+        <ul>
+          <li>
+            Built and maintained BI and reporting solutions for customer care, working across large Oracle and mixed-data environments.
+          </li>
+          <li>
+            Improved ETL and reporting performance and supported operational teams with better visibility into key metrics.
+          </li>
+        </ul>
+
+        <h3>Telecom Software Consultant — CHR Solutions (Martin Group)</h3>
+        <p><em>Missoula, MT | Mar 2001 – Jan 2008</em></p>
+        <ul>
+          <li>
+            Acted as lead BA and implementation consultant for telecom billing, CRM, and provisioning platforms.
+          </li>
+          <li>
+            Delivered SQL-based integrations and reporting to support outages, provisioning, and billing operations.
+          </li>
+        </ul>
+      </section>
+
     </section>
 
-    <section class="philosophy">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>DirectMyCare.com Portal Launch:</strong> Scaled mobile adoption, improved CSAT, and reduced support demand.</li>
-        <li><strong>AI Tooling Adoption:</strong> Designed company-wide AI agents and workflows for Product, Dev, UX, and Design teams.</li>
-        <li><strong>MFA Security Governance:</strong> Defined RACI matrix for security adoption, aligning multiple departments on implementation.</li>
-      </ul>
+    <!-- ENGINEERING MODE (DARK THEME) -->
+    <section class="mode-wrapper content-mode--engineering" aria-label="Engineering-focused resume">
+
+      <section class="beliefs">
+        <h2>Professional Summary</h2>
+        <p>
+          Senior Engineering &amp; Systems Leader with 20+ years of experience designing, building, and modernizing
+          SaaS platforms in healthcare, telecommunications, and consumer web. Combines hands-on experience in .NET,
+          Azure, DevOps, and data engineering with a strong product mindset and mentoring focus. Known for
+          API-first, domain-driven thinking, telemetry-informed decisions, and building teams that can ship frequently
+          and safely on complex, regulated systems.
+        </p>
+      </section>
+
+      <section class="philosophy">
+        <h2>Technical Skills (Engineering Lens)</h2>
+        <ul>
+          <li><strong>Languages &amp; Frameworks:</strong> .NET Core/Framework, C#, JavaScript, HTML/CSS, Xamarin / cross-platform mobile</li>
+          <li><strong>Cloud &amp; DevOps:</strong> Azure (DevOps, Functions, Blob, AKS, AAD), Kubernetes, CI/CD pipelines, Git</li>
+          <li><strong>Architecture:</strong> API-first, service-oriented and microservice-aligned patterns, separation of concerns, domain modeling</li>
+          <li><strong>Data &amp; Integration:</strong> SQL Server, ETL, SSIS/SSAS/SSRS, REST/SOAP APIs, messaging and batch processing</li>
+          <li><strong>Tooling:</strong> Azure DevOps, JIRA, Confluence, Postman, Figma, PowerShell, Bash</li>
+          <li><strong>Practices:</strong> Mentoring, code review, defensive coding, observability, trunk-based development, automation</li>
+        </ul>
+      </section>
+
+      <section class="beliefs">
+        <h2>Work Experience</h2>
+
+        <h3>Director: Product / Systems — Consumer Direct Care Network</h3>
+        <p><em>Missoula, MT | Jan 2023 – Present</em></p>
+        <ul>
+          <li>
+            Partner with engineering and architecture leadership to modernize a tightly coupled, desktop-era caregiver
+            and member portal into a mobile-first, PWA-based front end aligned with backend service rewrites.
+          </li>
+          <li>
+            Advocate for API-first, domain-focused design so timesheet, approval, and profile-management flows reflect
+            real-world usage and stable contracts rather than UI-driven schemas.
+          </li>
+          <li>
+            Support engineering teams through a phased strangler migration strategy, balancing greenfield UI
+            development with risk-managed lift-and-shift of legacy areas to maintain availability for hundreds of
+            thousands of users.
+          </li>
+          <li>
+            Help introduce fundamental observability and auditability patterns (App Insights telemetry, structured
+            events) to monitor adoption, behavior, and error patterns where instrumentation was limited.
+          </li>
+          <li>
+            Support implementation of a multi-lingual architecture expanding coverage from two hard-coded languages
+            to 13 vendor-backed translations, including future integration planning with an enterprise translation
+            management system.
+          </li>
+          <li>
+            Work with Engineering and Marketing leadership to bring CDCN’s public websites under a shared governance
+            and technical strategy, defining guardrails for WordPress, HubSpot, and supporting services.
+          </li>
+          <li>
+            Collaborate with Security, Architecture, and Engineering leaders on MFA platform selection and integration
+            strategy, clarifying how configuration, enrollment, and challenge flows interact with existing systems and
+            user data.
+          </li>
+          <li>
+            Design and implement reusable, source-controlled AI agents and patterns grounded in CDCN’s domain, security,
+            and privacy models, and help engineers integrate AI into workflows for code assistance, testing, and
+            documentation with appropriate governance.
+          </li>
+        </ul>
+
+        <h3>Application Development Manager (promoted from Senior Engineer) — Consumer Direct Care Network</h3>
+        <p><em>Missoula, MT | Nov 2019 – Dec 2022</em></p>
+        <ul>
+          <li>
+            Led development teams modernizing ERP-adjacent systems toward service-oriented and microservice-aligned
+            patterns as the user base grew from ~16K to 60K+.
+          </li>
+          <li>
+            Introduced CI/CD pipelines, automated tests, and movement toward trunk-based development to increase
+            deployment frequency while maintaining stability.
+          </li>
+          <li>
+            Mentored engineers in design patterns, defensive coding practices, and maintainable architecture.
+          </li>
+          <li>
+            Encouraged telemetry and logging practices that improved operational insight and reduced blind spots in
+            production.
+          </li>
+        </ul>
+
+        <h3>President &amp; Principal Engineer — OmniProfit.net</h3>
+        <p><em>Aurora, CO | Jan 2009 – Nov 2019</em></p>
+        <ul>
+          <li>
+            Designed and built mobile procurement and inventory optimization solutions, including GPS-enabled mobile apps
+            and integrations with retailer systems.
+          </li>
+          <li>
+            Owned architecture, infrastructure, and performance tuning from prototype through production and customer use.
+          </li>
+        </ul>
+
+        <h3>Software Engineer IV — GoDaddy</h3>
+        <p><em>Scottsdale, AZ | May 2011 – Mar 2017</em></p>
+        <ul>
+          <li>
+            Led design and implementation of internal systems in support of finance and registry operations, including
+            replacements for key Dynamics components and reporting pipelines.
+          </li>
+          <li>
+            Implemented ETL and warehouse migrations that supported accurate invoicing, registry reconciliation, and
+            downstream reporting.
+          </li>
+        </ul>
+
+        <h3>Senior Developer – Customer Care &amp; BI — DIRECTV</h3>
+        <p><em>Aurora, CO | Jan 2008 – May 2011</em></p>
+        <ul>
+          <li>
+            Developed and maintained BI, reporting, and tooling for customer care groups, working with large-scale Oracle
+            and mixed technology stacks.
+          </li>
+          <li>
+            Optimized ETL and reporting processes to reduce runtimes and improve reliability for operational users.
+          </li>
+        </ul>
+
+        <h3>Telecom Software Consultant — CHR Solutions (Martin Group)</h3>
+        <p><em>Missoula, MT | Mar 2001 – Jan 2008</em></p>
+        <ul>
+          <li>
+            Implemented telecom billing, CRM, and provisioning solutions for carriers, including SQL-based integrations and
+            custom reporting.
+          </li>
+          <li>
+            Acted as a bridge between client business stakeholders and technical teams on complex deployment and upgrade efforts.
+          </li>
+        </ul>
+      </section>
+
     </section>
 
+    <!-- SHARED EDUCATION -->
     <section class="beliefs">
       <h2>Education</h2>
-      <p><strong>B.S. Information Systems</strong> – University of Montana, College of Business | 2005</p>
+      <p>
+        <strong>Information Systems coursework</strong> — University of Montana, College of Business
+      </p>
     </section>
+
   </main>
 
   <script src="script.js"></script>
