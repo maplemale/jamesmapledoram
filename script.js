@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-  // Smooth scroll
+  // Smooth scroll for hash links
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click', e=>{
       const id=a.getAttribute('href').slice(1);
@@ -13,64 +13,78 @@ document.addEventListener('DOMContentLoaded', function(){
   const root=document.documentElement;
   const btn=document.getElementById('themeToggle');
 
-  // ---- Pill tooltip (created before theme init)
-  const pill=document.createElement('div');
-  pill.className='pill-hint'; pill.setAttribute('aria-hidden','true');
-  pill.innerHTML = `
-    <svg class="pill-icon" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
-      <defs><clipPath id="capsule"><rect x="0" y="0" width="100" height="50" rx="25" ry="25"></rect></clipPath></defs>
-      <g clip-path="url(#capsule)"><rect class="pill-body" x="0" y="0" width="100" height="50" rx="25" ry="25"></rect>
-        <ellipse class="pill-shine" cx="30" cy="16" rx="16" ry="8"></ellipse></g>
-    </svg>
-    <span class="pill-text"></span>`;
-  document.body.appendChild(pill);
+  // --- Persona + title + inline persona link active state
+  function updateContentMode(theme){
+    const productSection = document.querySelector('.content-mode--product');
+    const engineeringSection = document.querySelector('.content-mode--engineering');
+    const isDark = theme === 'dark';
 
-  function updatePill(){
-    const current=root.getAttribute('data-theme')||'light';
-    const next=current==='light'?'dark':'light';
-    const isNextDark=next==='dark';
-    pill.classList.toggle('pill--red', isNextDark);
-    pill.classList.toggle('pill--blue', !isNextDark);
-    pill.querySelector('.pill-text').textContent = isNextDark ? 'Take the red pill' : 'Take the blue pill';
+    if (productSection && engineeringSection){
+      productSection.setAttribute('aria-hidden', isDark ? 'true' : 'false');
+      engineeringSection.setAttribute('aria-hidden', isDark ? 'false' : 'true');
+    }
+
+    // Update document title
+    if (isDark){
+      document.title = 'James R. Mapledoram — Engineering Leadership';
+    } else {
+      document.title = 'James R. Mapledoram — Product Leadership';
+    }
+
+    // Update inline persona link active state
+    document.querySelectorAll('.persona-inline').forEach(link => {
+      const view = link.dataset.view;
+      const shouldBeActive =
+        (!isDark && view === 'product') ||
+        ( isDark && view === 'engineering');
+      link.classList.toggle('active', shouldBeActive);
+    });
   }
+
   function setTheme(next){
     root.setAttribute('data-theme', next);
     localStorage.setItem(THEME_KEY, next);
-    if(btn) btn.textContent = next==='dark'?'☀️ Light':'🌙 Dark';
-    updatePill();
+
+    // Button label describes the *other* portfolio
+    if(btn){
+      btn.textContent = next === 'dark'
+        ? '🎯 Product Portfolio'
+        : '🛠 Engineering Portfolio';
+    }
+
+    updateContentMode(next);
   }
 
-  // Init theme
-  setTheme(localStorage.getItem(THEME_KEY)||'light');
+  function getInitialTheme(){
+    const params = new URLSearchParams(window.location.search);
+
+    // High-level "view" param: ?view=engineering or ?view=product
+    const view = (params.get('view') || '').toLowerCase();
+    if (view) {
+      if (['engineering', 'eng', 'dev'].includes(view)) {
+        return 'dark';   // engineering persona
+      }
+      if (['product', 'pm'].includes(view)) {
+        return 'light';  // product persona
+      }
+    }
+
+    // Optional explicit theme override: ?theme=dark or ?theme=light
+    const themeParam = (params.get('theme') || '').toLowerCase();
+    if (themeParam === 'dark' || themeParam === 'light') {
+      return themeParam;
+    }
+
+    // Otherwise fall back to saved theme or default light
+    return localStorage.getItem(THEME_KEY) || 'light';
+  }
+
+  // Init theme + persona (URL param overrides localStorage)
+  const initialTheme = getInitialTheme();
+  setTheme(initialTheme);
   if(!btn) return;
 
-  // Tooltip placement (BELOW the button)
-  function placePillNearButton(){
-    const r=btn.getBoundingClientRect();
-    const x=r.left + r.width/2;
-    const y=r.bottom; // below
-    pill.style.left=Math.round(x - pill.offsetWidth/2)+'px';
-    pill.style.top =Math.round(y + 8)+'px'; // 8px gap
-  }
-  btn.addEventListener('mouseenter', ()=>{ updatePill(); placePillNearButton(); pill.classList.add('show'); });
-  btn.addEventListener('mouseleave', ()=> pill.classList.remove('show'));
-  window.addEventListener('scroll', ()=>{ if(pill.classList.contains('show')) placePillNearButton(); });
-  window.addEventListener('resize', ()=>{ if(pill.classList.contains('show')) placePillNearButton(); });
-
-  // Page check (About vs others)
-  // const path=window.location.pathname;
-  // const isAbout = path.endsWith('index.html') || path.endsWith('/') || path.endsWith('about.html') || path==='';
-
-  //if(!isAbout){
-    // Non-index pages: instant toggle
-    //btn.addEventListener('click', ()=>{
-      //const cur=root.getAttribute('data-theme')||'light';
-      //setTheme(cur==='light'?'dark':'light');
-    //});
-    //return;
-  //}
-
-  // ---- About page: text-aware Matrix morph (whitespace-safe)
+  // ---- Matrix text setup
   const MATRIX_CHARS='アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   function isVisibleElement(node){
@@ -81,44 +95,63 @@ document.addEventListener('DOMContentLoaded', function(){
     return r.width>0 && r.height>0;
   }
 
-  let wrappedOnce=false;
+  // Unwrap any previous matrix spans so we can re-wrap fresh each time
+  function resetWrappedText(){
+    const spans = Array.from(document.querySelectorAll('.mx-char'));
+    spans.forEach(span=>{
+      const parent = span.parentNode;
+      if(!parent) return;
+      const text = span.dataset.space === '1'
+        ? ' '
+        : (span.dataset.orig || span.textContent);
+      const textNode = document.createTextNode(text);
+      parent.replaceChild(textNode, span);
+      parent.normalize();
+    });
+  }
+
   function prepareTextTargets(rootEl){
     const stop=new Set(['SCRIPT','STYLE','NOSCRIPT','IFRAME','CANVAS','SVG','IMG','BUTTON','INPUT','TEXTAREA','SELECT']);
     const allSpans=[];
-    if(!wrappedOnce){
-      const walker=document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT, {
-        acceptNode(node){
-          const parent=node.parentElement;
-          if(!parent||stop.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
-          const t=node.nodeValue;
-          if(!t || !t.replace(/\s+/g,'').length) return NodeFilter.FILTER_REJECT;
-          if(!isVisibleElement(parent)) return NodeFilter.FILTER_REJECT;
-          return NodeFilter.FILTER_ACCEPT;
-        }
-      });
-      const nodes=[];
-      while(walker.nextNode()) nodes.push(walker.currentNode);
 
-      nodes.forEach(node=>{
-        const frag=document.createDocumentFragment();
-        const wrap=document.createElement('span');
-        wrap.style.display='inline';
-        const txt=node.nodeValue;
-        for(let i=0;i<txt.length;i++){
-          const ch=txt[i];
-          const span=document.createElement('span');
-          span.className='mx-char';
-          span.dataset.orig = ch;
-          // Normalize whitespace/newlines/tabs to a regular space
-          if(/\s/.test(ch)){ span.textContent=' '; span.dataset.space='1'; }
-          else { span.textContent=ch; }
-          wrap.appendChild(span);
+    // Always reset previous wrapping so we only animate current visible content
+    resetWrappedText();
+
+    const walker=document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT, {
+      acceptNode(node){
+        const parent=node.parentElement;
+        if(!parent||stop.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
+        const t=node.nodeValue;
+        if(!t || !t.replace(/\s+/g,'').length) return NodeFilter.FILTER_REJECT;
+        if(!isVisibleElement(parent)) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    const nodes=[];
+    while(walker.nextNode()) nodes.push(walker.currentNode);
+
+    nodes.forEach(node=>{
+      const frag=document.createDocumentFragment();
+      const wrap=document.createElement('span');
+      wrap.style.display='inline';
+      const txt=node.nodeValue;
+      for(let i=0;i<txt.length;i++){
+        const ch=txt[i];
+        const span=document.createElement('span');
+        span.className='mx-char';
+        span.dataset.orig = ch;
+        if(/\s/.test(ch)){
+          span.textContent=' ';
+          span.dataset.space='1';
+        } else {
+          span.textContent=ch;
         }
-        frag.appendChild(wrap);
-        node.parentNode.replaceChild(frag,node);
-      });
-      wrappedOnce=true;
-    }
+        wrap.appendChild(span);
+      }
+      frag.appendChild(wrap);
+      node.parentNode.replaceChild(frag,node);
+    });
 
     const columns=new Map();
     document.querySelectorAll('.mx-char').forEach(el=>{
@@ -136,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   let running=false;
-  function matrixTextTransition({duration=1100}={}){
+  function matrixTextTransition({duration=2000, targetTheme=null}={}){
     if(running) return; running=true;
     const start=performance.now();
     const {columns,allSpans}=prepareTextTargets(document.body);
@@ -155,7 +188,8 @@ document.addEventListener('DOMContentLoaded', function(){
           if(i<=head){
             if(!el.classList.contains('mx-on')){
               el.textContent=MATRIX_CHARS.charAt((Math.random()*MATRIX_CHARS.length)|0);
-              el.classList.add('mx-on'); (Math.random()<0.6)?el.classList.add('mx-fade'):el.classList.remove('mx-fade');
+              el.classList.add('mx-on');
+              (Math.random()<0.6)?el.classList.add('mx-fade'):el.classList.remove('mx-fade');
             } else if(Math.random()<0.18){
               el.textContent=MATRIX_CHARS.charAt((Math.random()*MATRIX_CHARS.length)|0);
             }
@@ -163,14 +197,22 @@ document.addEventListener('DOMContentLoaded', function(){
         }
       });
 
+      // Flip theme midway through
       if(!flipped && ms>=duration/2){
         flipped=true;
-        const cur=root.getAttribute('data-theme')||'light';
-        setTheme(cur==='light'?'dark':'light');
+        const curTheme=root.getAttribute('data-theme')||'light';
+        let next = targetTheme;
+        if (!next){
+          next = curTheme==='light' ? 'dark' : 'light';
+        }
+        if (next !== curTheme){
+          setTheme(next);
+        }
       }
 
-      if(!done){ requestAnimationFrame(tick); }
-      else {
+      if(!done){
+        requestAnimationFrame(tick);
+      } else {
         setTimeout(()=>{
           allSpans.forEach(el=>{
             el.textContent = (el.dataset.space==='1') ? ' ' : (el.dataset.orig || el.textContent);
@@ -183,5 +225,23 @@ document.addEventListener('DOMContentLoaded', function(){
     requestAnimationFrame(tick);
   }
 
-  btn.addEventListener('click', ()=> matrixTextTransition({duration:1100}) );
+  // Button click: toggle between personas with matrix effect
+  btn.addEventListener('click', ()=>{
+    const cur = root.getAttribute('data-theme') || 'light';
+    const target = (cur === 'light') ? 'dark' : 'light';
+    matrixTextTransition({duration:2000, targetTheme:target});
+  });
+
+  // Inline persona links (product / engineering) inside hero
+  document.querySelectorAll('.persona-inline').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const view = link.dataset.view;
+      const targetTheme = (view === 'engineering') ? 'dark' : 'light';
+      matrixTextTransition({duration:2000, targetTheme});
+    });
+  });
+
+  // Make sure active states are correct on load
+  updateContentMode(initialTheme);
 });
