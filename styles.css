@@ -77,25 +77,20 @@ section h2{margin:0 0 16px;font-size:22px}
 }
 .philosophy li>strong,.beliefs li>strong{color:var(--text)}
 
-/* PILL HINT (appears BELOW the button now) */
-.pill-hint{
-  position:fixed;z-index:10000;pointer-events:none;opacity:0;transform:translateY(2px) scale(.98);
-  transition:opacity .18s ease,transform .18s ease;
-  background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:12px;
-  padding:8px 10px;display:flex;align-items:center;gap:8px;box-shadow:0 10px 28px rgba(0,0,0,.15);
-  white-space:nowrap;font-size:14px;
+/* MODE WRAPPERS: toggle content for light vs dark */
+.mode-wrapper{
+  transition:opacity .35s ease;
 }
-[data-theme="dark"] .pill-hint{background:#111827;color:#e5e7eb;border-color:#1f2937;box-shadow:0 10px 28px rgba(0,0,0,.4)}
-.pill-hint.show{opacity:1;transform:translateY(6px) scale(1)} /* below */
-.pill-icon{width:28px;height:14px;display:inline-block}
-.pill-text{font-weight:500}
-.pill--red .pill-body{fill:#ef4444}.pill--blue .pill-body{fill:#3b82f6}
-.pill-shine{fill:rgba(255,255,255,.7)}
+[data-theme="light"] .content-mode--engineering{
+  display:none;
+}
+[data-theme="dark"] .content-mode--product{
+  display:none;
+}
 
 /* MATRIX TEXT SPANS (no preformatted whitespace -> no random line breaks) */
 .mx-char{
   display:inline;
-  /* white-space: normal;  default; prevents newline preservation */
   transition:color .25s ease,opacity .25s ease,transform .25s ease;
   will-change:color,opacity,transform;
 }
@@ -111,6 +106,7 @@ section h2{margin:0 0 16px;font-size:22px}
   .theme-btn{padding:8px 12px}
   .summary{padding:16px}
 }
+
 .card-list{ display:grid; gap:16px; }
 .card{
   border:1px solid var(--border);
@@ -122,3 +118,16 @@ section h2{margin:0 0 16px;font-size:22px}
 .card h3{ margin:0 0 6px; }
 .card p{ margin:0 0 8px; color:var(--muted); }
 .card ul{ margin:0; padding-left:18px; }
+
+.persona-inline {
+  color: var(--link);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.persona-inline.active {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+}
+
